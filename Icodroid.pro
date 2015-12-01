@@ -7,7 +7,8 @@
 QT       += core gui
 
 #Download newest version from: https://github.com/Skycoder42/QPathEdit
-include(C:/C++Libraries/Qt/QPathEdit/qpathedit.pri)
+win32: include(C:/C++Libraries/Qt/QPathEdit/qpathedit.pri)
+else:mac: include(/Library/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,6 +27,12 @@ win32 {
 
 	DEFINES += "COMPANY=\"\\\"$$QMAKE_TARGET_COMPANY\\\"\""
 	DEFINES += "DISPLAY_NAME=\"\\\"$$QMAKE_TARGET_PRODUCT\\\"\""
+} else:mac {
+	ICON = ./icons/main.icns
+	QMAKE_TARGET_BUNDLE_PREFIX = "com.SkycoderSoft."
+
+	DEFINES += "COMPANY=\"\\\"Skycoder Soft\\\"\""
+	DEFINES += "DISPLAY_NAME=\"\\\"IcoDroid\\\"\""
 }
 
 
@@ -47,7 +54,8 @@ DISTFILES += \
 	icons/Visualpharm-Must-Have-Picture.ico \#original icon from: http://www.visualpharm.com/
     build_scripts/win/deploy.bat \
     build_scripts/win/translate.bat \
-    qt.conf
+    qt.conf \
+    icons/main.icns
 
 RESOURCES += \
 	icodroid_res.qrc
