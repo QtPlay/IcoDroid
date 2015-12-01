@@ -33,3 +33,5 @@ Makefile*
 *.qmlproject.user
 *.qmlproject.user.*
 *.qm
+build_scripts/win/IcoDroid_Setup_x64/.vs/IcoDroid_Setup_x64/v14/.suo
+*.msi
