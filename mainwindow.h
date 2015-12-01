@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QSettings>
-#include <QTreeWidgetItem>
+#include <QListWidgetItem>
 #include "iconviewdialog.h"
 
 namespace Ui {
@@ -20,7 +20,7 @@ public:
 
 private slots:
 	void on_loadButton_clicked();
-	void on_loadViewTreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int);
+	void on_loadViewListWidget_itemDoubleClicked(QListWidgetItem *item);
 
 	void on_iconTypeComboBox_activated(const QString &textName);
 

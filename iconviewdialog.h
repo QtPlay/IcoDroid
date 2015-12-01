@@ -2,6 +2,7 @@
 #define ICONVIEWDIALOG_H
 
 #include <QDialog>
+#include <QSettings>
 
 namespace Ui {
 class IconViewDialog;
@@ -19,6 +20,7 @@ public:
 
 private:
 	Ui::IconViewDialog *ui;
+	QSettings *settings;
 };
 
 #endif // ICONVIEWDIALOG_H

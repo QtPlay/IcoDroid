@@ -13,8 +13,14 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>150</width>
+    <height>0</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Icon Preview</string>
   </property>
   <property name="modal">
    <bool>false</bool>

@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <QDir>
 #include <QMessageBox>
+#include <QApplication>
 
 struct ScaleInfo {
 	bool isChecked;
@@ -57,14 +58,17 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 	this->ui->basePathEdit->setDefaultDirectory(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
 	this->ui->basePathEdit->setPath(this->settings->value(QStringLiteral("paths/savePath")).toString());
+	this->ui->versionLabel->setText(QCoreApplication::applicationVersion());
 	this->ui->tabWidget->setCurrentIndex(0);
 
 	//restore gui
 	this->settings->beginGroup(QStringLiteral("gui"));
 	this->restoreGeometry(this->settings->value(QStringLiteral("geom")).toByteArray());
 	this->restoreState(this->settings->value(QStringLiteral("state")).toByteArray());
-	this->ui->loadViewTreeWidget->header()->restoreState(this->settings->value(QStringLiteral("header")).toByteArray());
 	this->settings->endGroup();
+
+	//connections
+	connect(this->ui->aboutButton, &QPushButton::clicked, qApp, &QApplication::aboutQt);
 }
 
 MainWindow::~MainWindow()
@@ -73,7 +77,6 @@ MainWindow::~MainWindow()
 	this->settings->beginGroup(QStringLiteral("gui"));
 	this->settings->setValue(QStringLiteral("geom"), this->saveGeometry());
 	this->settings->setValue(QStringLiteral("state"), this->saveState());
-	this->settings->setValue(QStringLiteral("header"), this->ui->loadViewTreeWidget->header()->saveState());
 	this->settings->endGroup();
 
 	this->settings->sync();
@@ -91,15 +94,15 @@ void MainWindow::on_loadButton_clicked()
 		if(!this->mainIcon.isNull()) {
 			this->settings->setValue(QStringLiteral("paths/openPath"), path);
 			this->ui->createButton->setEnabled(true);
-			this->ui->loadViewTreeWidget->clear();
+			this->ui->loadViewListWidget->clear();
 			this->ui->realFileLineEdit->setText(QFileInfo(path).baseName());
 
 			for(QSize realSize : this->mainIcon.availableSizes()) {
-				QTreeWidgetItem *item = new QTreeWidgetItem(this->ui->loadViewTreeWidget);
+				QListWidgetItem *item = new QListWidgetItem(this->ui->loadViewListWidget);
 				QPixmap pixmap = this->mainIcon.pixmap(realSize);
-				item->setIcon(0, pixmap);
-				item->setText(1, tr("%1x%2").arg(realSize.width()).arg(realSize.height()));
-				item->setData(0, Qt::UserRole, pixmap);
+				item->setIcon(pixmap);
+				item->setText(tr("%1x%2").arg(realSize.width()).arg(realSize.height()));
+				item->setData(Qt::UserRole, pixmap);
 			}
 		} else {
 			QMessageBox::critical(this, tr("Error"), tr("Unable to open icon \"%1\"").arg(path));
@@ -107,10 +110,10 @@ void MainWindow::on_loadButton_clicked()
 	}
 }
 
-void MainWindow::on_loadViewTreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int)
+void MainWindow::on_loadViewListWidget_itemDoubleClicked(QListWidgetItem *item)
 {
 	if(item)
-		this->previewDialog->previewIcon(item->data(0, Qt::UserRole).value<QPixmap>());
+		this->previewDialog->previewIcon(item->data(Qt::UserRole).value<QPixmap>());
 }
 
 void MainWindow::on_iconTypeComboBox_activated(const QString &textName)
