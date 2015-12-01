@@ -1204,7 +1204,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_E884D3412F5B4029AD614E7EEB07985E"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -1284,9 +1284,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:IcoDroid_Setup_x64"
+        "ProductName" = "8:IcoDroid"
         "ProductCode" = "8:{AA4244D2-A102-48C0-A279-4074427B6385}"
-        "PackageCode" = "8:{7921062A-C098-4364-9DD3-C5454E704C96}"
+        "PackageCode" = "8:{42F4AB74-63BA-4C17-A801-E9A124B6BE54}"
         "UpgradeCode" = "8:{AA1419E1-69AD-4E4B-934B-6A323FB10EF7}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1406,34 +1406,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6286A9B008264560B2494A5FA91AB9E0"
-            {
-            "Name" = "8:IcoDroid"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_288FBDC43C3641C988DE9869EFDBD80C"
-            "Folder" = "8:_F1DA3C40AAE5404183A8B9F2BD854887"
-            "WorkingFolder" = "8:_E884D3412F5B4029AD614E7EEB07985E"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_940D941C10434BA9B1ED0A4DB0CCDA47"
-            {
-            "Name" = "8:IcoDroid"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_288FBDC43C3641C988DE9869EFDBD80C"
-            "Folder" = "8:_C15F7376365C4BF39BFF995FD77C8FD1"
-            "WorkingFolder" = "8:_E884D3412F5B4029AD614E7EEB07985E"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -1717,8 +1689,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1202"
+                            "Setting" = "3:2"
+                            "Value" = "8:This Program is licensed under the MIT-License"
                             "DefaultValue" = "8:#1202"
                             "UsePlugInResources" = "11:TRUE"
                             }
