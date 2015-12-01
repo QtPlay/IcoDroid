@@ -55,7 +55,9 @@ DISTFILES += \
     build_scripts/win/deploy.bat \
     build_scripts/win/translate.bat \
     qt.conf \
-    icons/main.icns
+    icons/main.icns \
+    build_scripts/mac/deploy.command \
+    build_scripts/mac/translate.command
 
 RESOURCES += \
 	icodroid_res.qrc
