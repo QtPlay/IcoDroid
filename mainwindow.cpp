@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow),
 	settings(new QSettings(this)),
-	previewDialog(new IconViewDialog(this)),
+	previewDock(new IconViewDockWidget(this)),
 	mainIcon()
 {
 	this->settings->beginGroup(QStringLiteral("paths"));
@@ -56,6 +56,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->settings->endGroup();
 
 	ui->setupUi(this);
+	this->addDockWidget(Qt::RightDockWidgetArea, this->previewDock);
+	this->previewDock->hide();
 	this->ui->basePathEdit->setDefaultDirectory(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
 	this->ui->basePathEdit->setPath(this->settings->value(QStringLiteral("paths/savePath")).toString());
 	this->ui->versionLabel->setText(QCoreApplication::applicationVersion());
@@ -65,10 +67,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->settings->beginGroup(QStringLiteral("gui"));
 	this->restoreGeometry(this->settings->value(QStringLiteral("geom")).toByteArray());
 	this->restoreState(this->settings->value(QStringLiteral("state")).toByteArray());
+	this->restoreDockWidget(this->previewDock);
 	this->settings->endGroup();
 
 	//connections
 	connect(this->ui->aboutButton, &QPushButton::clicked, qApp, &QApplication::aboutQt);
+	connect(this->ui->previewCheckBox, &QCheckBox::clicked, this->previewDock, &IconViewDockWidget::setVisible);
+	connect(this->previewDock, &IconViewDockWidget::visibilityChanged, this->ui->previewCheckBox, &QCheckBox::setChecked);
+	this->ui->previewCheckBox->setChecked(this->previewDock->isVisible());
 }
 
 MainWindow::~MainWindow()
@@ -110,10 +116,10 @@ void MainWindow::on_loadButton_clicked()
 	}
 }
 
-void MainWindow::on_loadViewListWidget_itemDoubleClicked(QListWidgetItem *item)
+void MainWindow::on_loadViewListWidget_itemClicked(QListWidgetItem *item)
 {
 	if(item)
-		this->previewDialog->previewIcon(item->data(Qt::UserRole).value<QPixmap>());
+		this->previewDock->setPreviewIcon(item->data(Qt::UserRole).value<QPixmap>());
 }
 
 void MainWindow::on_iconTypeComboBox_activated(const QString &textName)

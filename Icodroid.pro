@@ -31,13 +31,13 @@ win32 {
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    iconviewdialog.cpp
+    iconviewdockwidget.cpp
 
 HEADERS  += mainwindow.h \
-    iconviewdialog.h
+    iconviewdockwidget.h
 
 FORMS    += mainwindow.ui \
-    iconviewdialog.ui
+    iconviewdockwidget.ui
 
 DISTFILES += \
     .gitignore \

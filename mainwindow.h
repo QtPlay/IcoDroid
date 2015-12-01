@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QSettings>
 #include <QListWidgetItem>
-#include "iconviewdialog.h"
+#include "iconviewdockwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,16 +20,14 @@ public:
 
 private slots:
 	void on_loadButton_clicked();
-	void on_loadViewListWidget_itemDoubleClicked(QListWidgetItem *item);
-
+	void on_loadViewListWidget_itemClicked(QListWidgetItem *item);
 	void on_iconTypeComboBox_activated(const QString &textName);
-
 	void on_createButton_clicked();
 
 private:
 	Ui::MainWindow *ui;
 	QSettings *settings;
-	IconViewDialog *previewDialog;
+	IconViewDockWidget *previewDock;
 
 	QIcon mainIcon;
 };

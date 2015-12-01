@@ -2,9 +2,9 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de_DE">
 <context>
-    <name>IconViewDialog</name>
+    <name>IconViewDockWidget</name>
     <message>
-        <location filename="../iconviewdialog.ui" line="+23"/>
+        <location filename="../iconviewdockwidget.ui" line="+14"/>
         <source>Icon Preview</source>
         <translation type="unfinished"></translation>
     </message>
@@ -17,7 +17,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+3"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load the icon file that will be used as a base.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shows a preview of all icons that have been loaded from a file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Show &amp;Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load an icon file to create Android icons from. (Ctrl+O)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -102,43 +117,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+40"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose you base-size. This will be the size of the mdpi-file. All other files will be scaled based on the factors listed on the left.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+25"/>
-        <source>Base &amp;Folder:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose a folder to create the icons folders into.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+22"/>
-        <source>Content Folder &amp;Prefix:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-90"/>
+        <location line="+7"/>
         <location filename="../mainwindow.cpp" line="+36"/>
         <source>Launcher Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-168"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load the icon file that will be used as a base.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shows a preview of all icons that have been loaded from a file.&lt;/p&gt;&lt;p&gt;Double-click an entry to see a full-screen preview.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+167"/>
+        <location line="+5"/>
         <location filename="../mainwindow.cpp" line="+5"/>
         <source>Action Bar / Dialog / Tab</source>
         <translation type="unfinished"></translation>
@@ -161,12 +146,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose you base-size. This will be the size of the mdpi-file. All other files will be scaled based on the factors listed on the left.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>px</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+16"/>
+        <source>Base &amp;Folder:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose a folder to create the icons folders into.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Content Folder &amp;Prefix:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the prefix of the folders.&lt;/p&gt;&lt;p&gt;For example, &amp;quot;drawable&amp;quot; will result in folder names like &amp;quot;drawable-xhdpi&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -191,7 +196,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+3"/>
+        <source>launcher_ic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create the Android icons. (Ctrl+S)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -206,12 +216,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-36"/>
-        <source>launcher_ic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+59"/>
+        <location line="+23"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -247,7 +252,7 @@
     </message>
     <message>
         <location line="+10"/>
-        <source>Website:</source>
+        <source>Updates:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -266,7 +271,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="+38"/>
+        <location filename="../mainwindow.cpp" line="+44"/>
         <source>Open Icon Archive</source>
         <translation type="unfinished"></translation>
     </message>

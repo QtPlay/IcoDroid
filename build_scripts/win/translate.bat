@@ -2,5 +2,5 @@
 :workingDir: %{sourceDir}
 @echo off
 
-lupdate -locations relative ./IcoDroid.pro
+lupdate -no-obsolete -locations relative ./IcoDroid.pro
 lrelease -compress -nounfinished ./IcoDroid.pro
