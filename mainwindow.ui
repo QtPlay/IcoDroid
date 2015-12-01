@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>488</width>
+    <height>261</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="loadTab">
+       <attribute name="title">
+        <string>Load Icons</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QTreeWidget" name="loadViewTreeWidget">
+          <column>
+           <property name="text">
+            <string>Icon</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Size</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="loadButton">
+            <property name="text">
+             <string>Load Icon</string>
+            </property>
+            <property name="shortcut">
+             <string>Ctrl+O</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="createTab">
+       <attribute name="title">
+        <string>Android Configuration</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QGroupBox" name="sizesGroupBox">
+            <property name="title">
+             <string>Icon Sizes</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QCheckBox" name="ldpiCheckBox">
+               <property name="text">
+                <string>ldpi (x0.5; 80dpi)</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="mdpiCheckBox">
+               <property name="text">
+                <string>mdpi (x1.0; 160dpi)</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="hdpiCheckBox">
+               <property name="text">
+                <string>hdpi (x1.5; 240dpi)</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="xhdpiCheckBox">
+               <property name="text">
+                <string>xhdpi (x2.0; 320dpi)</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="xxhdpiCheckBox">
+               <property name="text">
+                <string>xxhdpi (x3.0; 480dpi)</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="xxxhdpiCheckBox">
+               <property name="text">
+                <string>xxxhdpi (x4.0; 640dpi)</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QGroupBox" name="typeGroupBox">
+            <property name="title">
+             <string>Icon Type</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="iconTypeLabel">
+               <property name="text">
+                <string>&amp;Name:</string>
+               </property>
+               <property name="buddy">
+                <cstring>iconTypeComboBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="iconTypeComboBox">
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Launcher Icon</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Action Bar / Dialog / Tab</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Context Menu</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Notification</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="baseSizeMdpiLabel">
+               <property name="text">
+                <string>Base &amp;Size (mdpi):</string>
+               </property>
+               <property name="buddy">
+                <cstring>baseSizeMdpiSpinBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QSpinBox" name="baseSizeMdpiSpinBox">
+               <property name="suffix">
+                <string>px</string>
+               </property>
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>2147483647</number>
+               </property>
+               <property name="value">
+                <number>48</number>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="basePathLabel">
+               <property name="text">
+                <string>Base &amp;Path:</string>
+               </property>
+               <property name="buddy">
+                <cstring>basePathEdit</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QPathEdit" name="basePathEdit">
+               <property name="pathMode">
+                <enum>QPathEdit::ExistingFolder</enum>
+               </property>
+               <property name="dialogOptions">
+                <set>QFileDialog::ShowDirsOnly</set>
+               </property>
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+               <property name="allowEmptyPath">
+                <bool>false</bool>
+               </property>
+               <property name="defaultDirectory">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="contentFolderLabel">
+               <property name="text">
+                <string>Content &amp;Folder Base:</string>
+               </property>
+               <property name="buddy">
+                <cstring>contentFolderComboBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QComboBox" name="contentFolderComboBox">
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+               <item>
+                <property name="text">
+                 <string>drawable</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>mipmap</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="createButton">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>&amp;Create</string>
+                 </property>
+                 <property name="shortcut">
+                  <string>Ctrl+S</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="realNameLabel">
+               <property name="text">
+                <string>&amp;Real File Name:</string>
+               </property>
+               <property name="buddy">
+                <cstring>realFileLineEdit</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLineEdit" name="realFileLineEdit">
+               <property name="text">
+                <string>launcher_ic</string>
+               </property>
+               <property name="placeholderText">
+                <string>without filetype...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QPathEdit</class>
+   <extends>QWidget</extends>
+   <header>qpathedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
