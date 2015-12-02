@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define Manufactor = "Felix Barz"?>
+  <?define UpgradeGuid = "{2C26A120-EEA0-4AF1-9CD1-345E01A50C4E}"?>
+  <?define Version = "1.0.0.0"?>
+  <?define DeployPath = "C:\Users\Felix\ProgrammingProjects\QtProjects\build-Icodroid-Desktop_Qt_5_5_1_MSVC2013_64bit-Release\deploy\"?>
+
+  <Product
+    Id="*"
+    Name="IcoDroid"
+    Language="1033"
+    Version="$(var.Version)"
+    Manufacturer="$(var.Manufactor)"
+    UpgradeCode="$(var.UpgradeGuid)">
+
+    <Package
+      InstallerVersion="200"
+      Compressed="yes"
+      Platform="x64"
+      Description="Installs IcoDroid"
+      Manufacturer="$(var.Manufactor)"
+      Comments="A tool to create Android icons from single files like .ico, .png, ..." />
+
+    <Media
+      Id="1"
+      Cabinet="media1.cab"
+      EmbedCab="yes" />
+
+    <Upgrade Id="$(var.UpgradeGuid)">
+      <UpgradeVersion Minimum="$(var.Version)"
+                      IncludeMinimum="no"
+                      OnlyDetect="yes"
+                      Language="1033"
+                      Property="NEWPRODUCTFOUND" />
+      <UpgradeVersion Minimum="0.1.0.0"
+                      IncludeMinimum="yes"
+                      Maximum="$(var.Version)"
+                      IncludeMaximum="no"
+                      Language="1033"
+                      Property="UPGRADEFOUND" />
+    </Upgrade>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLLOCATION" Name="IcoDroid">
+          
+          <Component Id="MainExecutable" Win64="yes" Guid="{100F3B0B-356E-43E8-A7C5-A12D9AD49B08}">
+            <File Id="IcoDroid.exe" Name="IcoDroid.exe" Source="$(var.DeployPath)IcoDroid.exe" KeyPath="yes">
+              <Shortcut Advertise="yes" Id="IcoDroid.exe.lnk" Name="IcoDroid" Directory="DesktopFolder" WorkingDirectory="INSTALLLOCATION" Description="Run IcoDroid" Icon="Icon.exe">
+                <Icon Id="Icon.exe" SourceFile="$(var.DeployPath)IcoDroid.exe" />
+              </Shortcut>
+            </File>
+            <File Id="qt.conf" Name="qt.conf" Source="$(var.DeployPath)qt.conf" />
+          </Component>
+          
+          <Component Id="QtLibs" Win64="yes" Guid="{4E2E4F6C-EFBF-46CA-B394-8FAF89095A32}">
+            <File Id="Qt5Core.dll" Name="Qt5Core.dll" Source="$(var.DeployPath)Qt5Core.dll" />
+            <File Id="Qt5Gui.dll" Name="Qt5Gui.dll" Source="$(var.DeployPath)Qt5Gui.dll" />
+            <File Id="Qt5Svg.dll" Name="Qt5Svg.dll" Source="$(var.DeployPath)Qt5Svg.dll" />
+            <File Id="Qt5Widgets.dll" Name="Qt5Widgets.dll" Source="$(var.DeployPath)Qt5Widgets.dll" />
+          </Component>
+
+          <Component Id="ExternalLibs" Win64="yes" Guid="{A189CEA5-42A7-4C51-A3FA-DC96809E6D58}">
+            <File Id="d3dcompiler_47.dll" Name="d3dcompiler_47.dll" Source="$(var.DeployPath)d3dcompiler_47.dll" />
+            <File Id="libEGL.dll" Name="libEGL.dll" Source="$(var.DeployPath)libEGL.dll" />
+            <File Id="libGLESV2.dll" Name="libGLESV2.dll" Source="$(var.DeployPath)libGLESV2.dll" />
+            <File Id="opengl32sw.dll" Name="opengl32sw.dll" Source="$(var.DeployPath)opengl32sw.dll" />
+          </Component>
+          
+          <Directory Id="iconenginesFolder" Name="iconengines">
+            <Component Id="iconengines" Win64="yes" Guid="{4A763402-9408-45F4-845A-A2B2CF09D757}">
+              <File Id="qsvgicon.dll" Name="qsvgicon.dll" Source="$(var.DeployPath)iconengines\qsvgicon.dll" />
+            </Component>
+          </Directory>
+
+          <Directory Id="imageformatsFolder" Name="imageformats">
+            <Component Id="imageformats" Win64="yes" Guid="{8D655E65-8BCC-4291-BAED-BF15002E342A}">
+              <File Id="qdds.dll" Name="qdds.dll" Source="$(var.DeployPath)imageformats\qdds.dll" />
+              <File Id="qgif.dll" Name="qgif.dll" Source="$(var.DeployPath)imageformats\qgif.dll" />
+              <File Id="qicns.dll" Name="qicns.dll" Source="$(var.DeployPath)imageformats\qicns.dll" />
+              <File Id="qico.dll" Name="qico.dll" Source="$(var.DeployPath)imageformats\qico.dll" />
+              <File Id="qjp2.dll" Name="qjp2.dll" Source="$(var.DeployPath)imageformats\qjp2.dll" />
+              <File Id="qjpeg.dll" Name="qjpeg.dll" Source="$(var.DeployPath)imageformats\qjpeg.dll" />
+              <File Id="qmng.dll" Name="qmng.dll" Source="$(var.DeployPath)imageformats\qmng.dll" />
+              <File Id="qsvg.dll" Name="qsvg.dll" Source="$(var.DeployPath)imageformats\qsvg.dll" />
+              <File Id="qtga.dll" Name="qtga.dll" Source="$(var.DeployPath)imageformats\qtga.dll" />
+              <File Id="qtiff.dll" Name="qtiff.dll" Source="$(var.DeployPath)imageformats\qtiff.dll" />
+              <File Id="qwbmp.dll" Name="qwbmp.dll" Source="$(var.DeployPath)imageformats\qwbmp.dll" />
+              <File Id="qwebp.dll" Name="qwebp.dll" Source="$(var.DeployPath)imageformats\qwebp.dll" />
+            </Component>
+          </Directory>
+
+          <Directory Id="platformsFolder" Name="platforms">
+            <Component Id="platforms" Win64="yes" Guid="{88A2B16B-60A2-4DF4-8C90-34C28468C860}">
+              <File Id="qwindows.dll" Name="qwindows.dll" Source="$(var.DeployPath)platforms\qwindows.dll" />
+            </Component>
+          </Directory>
+          
+          <Directory Id="translationsFolder" Name="translations">
+            <Component Id="translations" Win64="yes" Guid="{F98E9C99-FEFE-4B25-8B52-3488B71D8C36}">
+              <File Id="Icodroid_de.qm" Name="Icodroid_de.qm" Source="$(var.DeployPath)translations\Icodroid_de.qm" />
+              <File Id="Icodroid_en.qm" Name="Icodroid_en.qm" Source="$(var.DeployPath)translations\Icodroid_en.qm" />
+              <File Id="qt_de.qm" Name="qt_de.qm" Source="$(var.DeployPath)translations\qt_de.qm" />
+              <File Id="qt_en.qm" Name="qt_en.qm" Source="$(var.DeployPath)translations\qt_en.qm" />
+              <File Id="qt_uk.qm" Name="qt_uk.qm" Source="$(var.DeployPath)translations\qt_uk.qm" />
+            </Component>
+          </Directory>
+          
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="MyShortCutsDir" Name="IcoDroid">
+          <Component Id="ShortCutComponent" Guid="{C98E7433-9801-47A2-8557-3F43B016EAE2}">
+            <Shortcut Id="ProgShortCut" Name="IcoDroid" Description="IcoDroid" Target="[INSTALLLOCATION]IcoDroid.exe" />
+            <Shortcut Id="UninstallShortCut" Name="Uninstall IcoDroid" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]"/>
+            <RemoveFolder Id="RemoveMyShortCuts" On="uninstall"/>
+            <RegistryValue Root="HKCU" Key="Software\Skycoder Soft\IcoDroid" Name="installed" Type="integer" Value="1" KeyPath="yes"/><!-- TODO ???-->
+          </Component>
+        </Directory>
+      </Directory>
+      
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="IcoDroid" Level="1">
+      <ComponentRef Id="MainExecutable" />
+      <ComponentRef Id="QtLibs" />
+      <ComponentRef Id="ExternalLibs" />
+      <ComponentRef Id="iconengines" />
+      <ComponentRef Id="imageformats" />
+      <ComponentRef Id="platforms" />
+      <ComponentRef Id="translations" />
+      <ComponentRef Id="ShortCutComponent" />
+    </Feature>
+
+    <!-- Keinen Downgrade zulassen -->
+    <CustomAction Id="PreventDowngrading" Error="A newer version of IcoDroid is already installed." />
+
+    <Binary Id="vcredist_x64.exe" SourceFile="$(var.DeployPath)vcredist_x64.exe"/>
+    <CustomAction Id="LaunchVcredist" BinaryKey="vcredist_x64.exe" ExeCommand="/quiet /norestart" Execute='deferred' Return='ignore' Impersonate='no'/>
+
+    <InstallExecuteSequence>
+      <Custom Action="PreventDowngrading" After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
+      <Custom Action='LaunchVcredist' After='InstallFiles'>NOT REMOVE</Custom>
+      <RemoveExistingProducts After="InstallFinalize" />
+    </InstallExecuteSequence>
+
+    <InstallUISequence>
+      <Custom Action="PreventDowngrading" After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
+    </InstallUISequence>
+
+    <WixVariable Id='WixUILicenseRtf' Overridable='yes' Value='$(var.DeployPath)LICENSE.rtf'/>
+
+    <UIRef Id="WixUI_Minimal" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+  </Product>
+</Wix>
