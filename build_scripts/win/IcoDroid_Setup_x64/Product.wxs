@@ -45,11 +45,7 @@
         <Directory Id="APPLICATIONFOLDER" Name="IcoDroid">
           
           <Component Id="MainExecutable" Win64="yes" Guid="{100F3B0B-356E-43E8-A7C5-A12D9AD49B08}">
-            <File Id="IcoDroid.exe" Name="IcoDroid.exe" Source="$(var.DeployPath)IcoDroid.exe" KeyPath="yes">
-              <Shortcut Advertise="yes" Id="IcoDroid.exe.lnk" Name="IcoDroid" Directory="DesktopFolder" WorkingDirectory="APPLICATIONFOLDER" Description="Run IcoDroid" Icon="Icon.exe">
-                <Icon Id="Icon.exe" SourceFile="$(var.DeployPath)IcoDroid.exe" />
-              </Shortcut>
-            </File>
+            <File Id="IcoDroid.exe" Name="IcoDroid.exe" Source="$(var.DeployPath)IcoDroid.exe" KeyPath="yes" />
             <File Id="qt.conf" Name="qt.conf" Source="$(var.DeployPath)qt.conf" />
           </Component>
           
@@ -111,16 +107,21 @@
 
       <Directory Id="ProgramMenuFolder">
         <Directory Id="MyShortCutsDir" Name="IcoDroid">
-          <Component Id="ShortCutComponent" Guid="{C98E7433-9801-47A2-8557-3F43B016EAE2}">
-            <Shortcut Id="ProgShortCut" Name="IcoDroid" Description="IcoDroid" Target="[APPLICATIONFOLDER]IcoDroid.exe" />
+          <Component Id="ProgramsMenuComponent" Win64="yes" Guid="{C98E7433-9801-47A2-8557-3F43B016EAE2}">
+            <Shortcut Id="ProgShortCut" Name="IcoDroid" Description="Run IcoDroid" Target="[APPLICATIONFOLDER]IcoDroid.exe" />
             <Shortcut Id="UninstallShortCut" Name="Uninstall IcoDroid" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]"/>
             <RemoveFolder Id="RemoveMyShortCuts" On="uninstall"/>
-            <RegistryValue Root="HKCU" Key="Software\Skycoder Soft\IcoDroid" Name="installed" Type="integer" Value="1" KeyPath="yes"/><!-- TODO ???-->
+            <RegistryValue Root="HKCU" Key="Software\Skycoder Soft\IcoDroid" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
           </Component>
         </Directory>
       </Directory>
-      
-      <Directory Id="DesktopFolder" Name="Desktop" />
+
+      <Directory Id="DesktopFolder" Name="Desktop">
+        <Component Id="DesktopShortcut" Win64="yes" Guid="{F0659491-CD24-45B2-823B-E4CD84CE9DB1}">
+          <Shortcut Id="IcoDroid.exe.lnk" Name="IcoDroid" Description="Run IcoDroid" Target="[APPLICATIONFOLDER]IcoDroid.exe" />
+          <RegistryValue Root="HKCU" Key="Software\Skycoder Soft\IcoDroid" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        </Component>
+      </Directory>
     </Directory>
 
     <Feature Id="MainFeature" Title="IcoDroid" Absent="disallow" Description="The program itself and general translations" Level="1">
@@ -135,7 +136,10 @@
       <ComponentRef Id="platforms" />
     </Feature>
     <Feature Id="ShortcutFeature" Title="Desktop Shortcut" Absent="allow"  Description="A shortcut on the desktop to the application"  Level="1">
-      <ComponentRef Id="ShortCutComponent" />
+      <ComponentRef Id="DesktopShortcut" />
+    </Feature>
+    <Feature Id="ProgramsMenuFeature" Title="Programs Menu Entry" Absent="allow"  Description="Creates an entry inside of the programs menu"  Level="1">
+      <ComponentRef Id="ProgramsMenuComponent" />
     </Feature>
 
     <!-- Keinen Downgrade zulassen -->
