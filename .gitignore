@@ -41,3 +41,4 @@ build_scripts/win/IcoDroid_Setup_x64/obj/Debug/IcoDroid_Setup_x64.wixproj.FileLi
 *.wixobj
 build_scripts/win/IcoDroid_Setup_x64/obj/Release/IcoDroid_Setup_x64.wixproj.BindContentsFileListnull.txt
 build_scripts/win/IcoDroid_Setup_x64/obj/Debug/IcoDroid_Setup_x64.wixproj.BindContentsFileListnull.txt
+build_scripts/win/IcoDroid_Setup_x64/obj/Debug/IcoDroid_Setup_x64.wixproj.BindOutputsFileListnull.txt
