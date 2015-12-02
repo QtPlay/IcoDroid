@@ -36,3 +36,7 @@ Makefile*
 build_scripts/win/IcoDroid_Setup_x64/.vs/IcoDroid_Setup_x64/v14/.suo
 *.msi
 *.wixpdb
+build_scripts/win/IcoDroid_Setup_x64/obj/Debug/IcoDroid_Setup_x64.wixproj.BindBuiltOutputsFileListnull.txt
+build_scripts/win/IcoDroid_Setup_x64/obj/Debug/IcoDroid_Setup_x64.wixproj.FileList.txt
+*.wixobj
+build_scripts/win/IcoDroid_Setup_x64/obj/Release/IcoDroid_Setup_x64.wixproj.BindContentsFileListnull.txt
