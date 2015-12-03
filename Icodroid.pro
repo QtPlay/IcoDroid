@@ -57,7 +57,10 @@ DISTFILES += \
     qt.conf \
     icons/main.icns \
     build_scripts/mac/deploy.command \
-    build_scripts/mac/translate.command
+    build_scripts/mac/translate.command \
+    build_scripts/mac/dmgInfo.json \
+    build_scripts/mac/createDmg.txt \
+    build_scripts/mac/background.png
 
 RESOURCES += \
 	icodroid_res.qrc

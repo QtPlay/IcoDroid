@@ -1,0 +1,6 @@
+run manually via terminal:
+working directory: %{buildDir}/deploy
+
+NOTE: replace the IcoDroid.app path to the one you are using
+
+appdmg %{sourceDir}/build_scripts/mac/dmgInfo.json ./IcoDroid.dmg

@@ -20,7 +20,8 @@ cp $1/translations/qtbase_*.qm ./IcoDroid.app/Contents/translations/
 mkdir -p ./IcoDroid.app/Contents/Resources
 cp $3/qt.conf ./IcoDroid.app/Contents/Resources/qt.conf
 
-$1/bin/macdeployqt IcoDroid.app -dmg
+#DMG-Creation done via appdmg: https://github.com/LinusU/node-appdmg
+#check createDmg.txt for details
 
 #EXECUTION:
 #command:		%{buildDir}/deploy/IcoDroid.app/Contents/MacOS/IcoDroid
