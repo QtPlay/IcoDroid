@@ -20,7 +20,7 @@ public:
 
 private slots:
 	void on_loadButton_clicked();
-	void on_loadViewListWidget_itemClicked(QListWidgetItem *item);
+	void on_loadViewListWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *);
 	void on_iconTypeComboBox_activated(const QString &textName);
 	void on_createButton_clicked();
 

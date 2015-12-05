@@ -3,6 +3,9 @@
 #include <QApplication>
 #include <QLibraryInfo>
 #include <QLocale>
+#include <QCommandLineParser>
+
+static void initParser(QCommandLineParser &parser);
 
 int main(int argc, char *argv[])
 {
@@ -27,4 +30,9 @@ int main(int argc, char *argv[])
 	w.show();
 
 	return a.exec();
+}
+
+static void initParser(QCommandLineParser &parser)
+{
+	//TODO
 }

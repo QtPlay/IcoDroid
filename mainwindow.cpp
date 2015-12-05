@@ -70,6 +70,16 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->restoreDockWidget(this->previewDock);
 	this->settings->endGroup();
 
+	//restore dpi-states
+	this->settings->beginGroup(QStringLiteral("dpiRates"));
+	this->ui->ldpiCheckBox->setChecked(this->settings->value(QStringLiteral("ldpi"), true).toBool());
+	this->ui->mdpiCheckBox->setChecked(this->settings->value(QStringLiteral("mdpi"), true).toBool());
+	this->ui->hdpiCheckBox->setChecked(this->settings->value(QStringLiteral("hdpi"), true).toBool());
+	this->ui->xhdpiCheckBox->setChecked(this->settings->value(QStringLiteral("xhdpi"), true).toBool());
+	this->ui->xxhdpiCheckBox->setChecked(this->settings->value(QStringLiteral("xxhdpi"), true).toBool());
+	this->ui->xxxhdpiCheckBox->setChecked(this->settings->value(QStringLiteral("xxxhdpi"), true).toBool());
+	this->settings->endGroup();
+
 	//connections
 	connect(this->ui->aboutButton, &QPushButton::clicked, qApp, &QApplication::aboutQt);
 	connect(this->ui->previewCheckBox, &QCheckBox::clicked, this->previewDock, &IconViewDockWidget::setVisible);
@@ -83,6 +93,16 @@ MainWindow::~MainWindow()
 	this->settings->beginGroup(QStringLiteral("gui"));
 	this->settings->setValue(QStringLiteral("geom"), this->saveGeometry());
 	this->settings->setValue(QStringLiteral("state"), this->saveState());
+	this->settings->endGroup();
+
+	//save dpi-states
+	this->settings->beginGroup(QStringLiteral("dpiRates"));
+	this->settings->setValue(QStringLiteral("ldpi"), this->ui->ldpiCheckBox->isChecked());
+	this->settings->setValue(QStringLiteral("mdpi"), this->ui->mdpiCheckBox->isChecked());
+	this->settings->setValue(QStringLiteral("hdpi"), this->ui->hdpiCheckBox->isChecked());
+	this->settings->setValue(QStringLiteral("xhdpi"), this->ui->xhdpiCheckBox->isChecked());
+	this->settings->setValue(QStringLiteral("xxhdpi"), this->ui->xxhdpiCheckBox->isChecked());
+	this->settings->setValue(QStringLiteral("xxxhdpi"), this->ui->xxxhdpiCheckBox->isChecked());
 	this->settings->endGroup();
 
 	this->settings->sync();
@@ -116,10 +136,10 @@ void MainWindow::on_loadButton_clicked()
 	}
 }
 
-void MainWindow::on_loadViewListWidget_itemClicked(QListWidgetItem *item)
+void MainWindow::on_loadViewListWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *)
 {
-	if(item)
-		this->previewDock->setPreviewIcon(item->data(Qt::UserRole).value<QPixmap>());
+	if(current)
+		this->previewDock->setPreviewIcon(current->data(Qt::UserRole).value<QPixmap>());
 }
 
 void MainWindow::on_iconTypeComboBox_activated(const QString &textName)

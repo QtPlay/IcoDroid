@@ -12,7 +12,7 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.ui" line="+22"/>
+        <location filename="../mainwindow.ui" line="+25"/>
         <source>Load Icons</source>
         <translation type="unfinished"></translation>
     </message>
@@ -271,7 +271,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="+44"/>
+        <location filename="../mainwindow.cpp" line="+64"/>
         <source>Open Icon Archive</source>
         <translation type="unfinished"></translation>
     </message>
