@@ -2,6 +2,34 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de_DE">
 <context>
+    <name>GLOBAL</name>
+    <message>
+        <location filename="../main.cpp" line="+43"/>
+        <source>A tool to create Android icons from single files like .ico, .png, …</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Icon Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>A number of &lt;paths&gt; to files to be opened by this tool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Invalid arguments!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>IconViewDockWidget</name>
     <message>
         <location filename="../iconviewdockwidget.ui" line="+14"/>

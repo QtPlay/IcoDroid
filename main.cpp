@@ -6,7 +6,7 @@
 #include <QCommandLineParser>
 #include <QMessageBox>
 
-static int execParser(QCommandLineParser &parser);
+static bool execParser(QCommandLineParser &parser);
 
 int main(int argc, char *argv[])
 {
@@ -28,29 +28,38 @@ int main(int argc, char *argv[])
 	}
 
 	QCommandLineParser parser;
-	int parserRes = execParser(parser);
-	if(parserRes)
-		return parserRes;
+	if(!execParser(parser))
+		return 0;
 
+	//TODO use the paths passed command line
 	MainWindow w;
 	w.show();
 
 	return a.exec();
 }
 
-static int execParser(QCommandLineParser &parser)
+static bool execParser(QCommandLineParser &parser)
 {
-	parser.setApplicationDescription(QCoreApplication::translate("GLOBAL", ""));
-	parser.addVersionOption();
+	parser.setApplicationDescription(QCoreApplication::translate("GLOBAL", "A tool to create Android icons from single files like .ico, .png, …"));
 	parser.addHelpOption();
 
+	parser.addPositionalArgument(QCoreApplication::translate("GLOBAL", "Icon Files"),
+								 QCoreApplication::translate("GLOBAL", "A number of <paths> to files to be opened by this tool"),
+								 "[paths…]");
+
 	if(!parser.parse(QCoreApplication::arguments())) {
-		QMessageBox::warning(NULL, QCoreApplication::translate("GLOBAL", "Invalid arguments!"), parser.errorText());
-		return 42;
+		QMessageBox::warning(NULL,
+							 QCoreApplication::translate("GLOBAL", "Invalid arguments!"),
+							 parser.errorText());
+		return false;
 	} else {
-		if(parser.isSet(QStringLiteral("help"))) {
-			QMessageBox::information(NULL, QCoreApplication::translate("GLOBAL", "Usage"), parser.helpText());
-			return 1;
+		if(parser.isSet(QStringLiteral("h"))) {
+			QMessageBox::information(NULL,
+									 QCoreApplication::translate("GLOBAL", "Usage"),
+									 parser.helpText());
+			return false;
 		}
+
+		return true;
 	}
 }
