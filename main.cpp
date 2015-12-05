@@ -4,8 +4,9 @@
 #include <QLibraryInfo>
 #include <QLocale>
 #include <QCommandLineParser>
+#include <QMessageBox>
 
-static void initParser(QCommandLineParser &parser);
+static int execParser(QCommandLineParser &parser);
 
 int main(int argc, char *argv[])
 {
@@ -26,13 +27,30 @@ int main(int argc, char *argv[])
 		QCoreApplication::installTranslator(translator);
 	}
 
+	QCommandLineParser parser;
+	int parserRes = execParser(parser);
+	if(parserRes)
+		return parserRes;
+
 	MainWindow w;
 	w.show();
 
 	return a.exec();
 }
 
-static void initParser(QCommandLineParser &parser)
+static int execParser(QCommandLineParser &parser)
 {
-	//TODO
+	parser.setApplicationDescription(QCoreApplication::translate("GLOBAL", ""));
+	parser.addVersionOption();
+	parser.addHelpOption();
+
+	if(!parser.parse(QCoreApplication::arguments())) {
+		QMessageBox::warning(NULL, QCoreApplication::translate("GLOBAL", "Invalid arguments!"), parser.errorText());
+		return 42;
+	} else {
+		if(parser.isSet(QStringLiteral("help"))) {
+			QMessageBox::information(NULL, QCoreApplication::translate("GLOBAL", "Usage"), parser.helpText());
+			return 1;
+		}
+	}
 }
