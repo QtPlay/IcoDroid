@@ -6,27 +6,27 @@
     <message>
         <location filename="../main.cpp" line="+47"/>
         <source>A tool to create Android icons from single files like .ico, .png, …</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein Werkzeug um Android-Icons aus einzelnen Dateien zu erzeugen, z.B. .ico, .png, …</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Icon Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Dateien</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>A number of &lt;paths&gt; to files to be opened by this tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine Anzahl von &lt;Pfaden&gt;, welche mit dem Programm geöffnet werden sollen</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Invalid arguments!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungültige Parameter!</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Usage</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwendung</translation>
     </message>
 </context>
 <context>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../iconviewdockwidget.ui" line="+14"/>
         <source>Icon Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon Vorschau</translation>
     </message>
 </context>
 <context>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../mainwindow.ui" line="+25"/>
         <source>Load Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Icons laden</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -57,12 +57,12 @@
     <message>
         <location line="+18"/>
         <source>Show &amp;Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vorschau Anzeigen</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Remove Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon entfernen</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -72,17 +72,17 @@
     <message>
         <location line="+3"/>
         <source>Load Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon laden</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Android Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Android Konfiguration</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -97,52 +97,22 @@
     <message>
         <location line="+3"/>
         <source>Icon Sizes</source>
-        <translation type="unfinished"></translation>
+        <translation>Icons Größen</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>ldpi (x0.5; 80dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>mdpi (x1.0; 160dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>hdpi (x1.5; 240dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>xhdpi (x2.0; 320dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>xxhdpi (x3.0; 480dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>xxxhdpi (x4.0; 640dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+69"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add details about the generated files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Icon Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon Typ</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>&amp;Profile:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Profil:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -153,22 +123,52 @@
         <location filename="../mainwindow.cpp" line="+55"/>
         <location line="+155"/>
         <source>Launcher Icon</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Context Menu</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="+10"/>
+        <location filename="../mainwindow.ui" line="-82"/>
+        <source>ldpi (×0.5; 80dpi)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>mdpi (×1.0; 160dpi)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>hdpi (×1.5; 240dpi)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>xhdpi (×2.0; 320dpi)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>xxhdpi (×3.0; 480dpi)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>xxxhdpi (×4.0; 640dpi)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+42"/>
         <source>Base &amp;Size (mdpi):</source>
-        <translation type="unfinished"></translation>
+        <translation>Basis-&amp;Größe:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -178,12 +178,12 @@
     <message>
         <location line="+9"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Base &amp;Folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Basis-&amp;Ordner:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -193,7 +193,7 @@
     <message>
         <location line="+22"/>
         <source>Content Folder &amp;Prefix:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Inhalts-Ordner-Präfix:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -203,17 +203,17 @@
     <message>
         <location line="+7"/>
         <source>drawable</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+5"/>
         <source>mipmap</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+8"/>
         <source>File &amp;Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei&amp;name:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -228,17 +228,17 @@
     <message>
         <location line="+3"/>
         <source>&amp;Create</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Erzeugen</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+23"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -258,22 +258,22 @@
     <message>
         <location line="+9"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Version:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Author:</source>
-        <translation type="unfinished"></translation>
+        <translation>Author:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Felix Barz (Skycoder Soft)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Updates:</source>
-        <translation type="unfinished"></translation>
+        <translation>Updates:</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -283,17 +283,17 @@
     <message>
         <location line="+15"/>
         <source>Written with the Qt-Framwork.</source>
-        <translation type="unfinished"></translation>
+        <translation>.Geschrieben mit dem Qt-Framework</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Qt</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="-108"/>
         <source>Open Icon Archive</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Archiv öffnen</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -352,13 +352,13 @@
     <name>PixmapModel</name>
     <message>
         <location filename="../pixmapmodel.cpp" line="+78"/>
-        <source>%1x%2</source>
-        <translation type="unfinished"></translation>
+        <source>%1×%2</source>
+        <translation>%1×%2</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>From file: </source>
-        <translation type="unfinished"></translation>
+        <translation>Aus Datei: </translation>
     </message>
 </context>
 </TS>

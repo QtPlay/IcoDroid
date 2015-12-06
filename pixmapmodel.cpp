@@ -75,7 +75,7 @@ QVariant PixmapModel::data(const QModelIndex &index, int role) const
 
 	switch(role) {
 	case Qt::DisplayRole:
-		return tr("%1x%2")
+		return tr("%1×%2")
 				.arg(this->pixmapList[index.row()].first.width())
 				.arg(this->pixmapList[index.row()].first.height());
 	case Qt::DecorationRole:

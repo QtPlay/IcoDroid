@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="loadTab">
        <attribute name="title">
@@ -115,7 +115,7 @@
              <item>
               <widget class="QCheckBox" name="ldpiCheckBox">
                <property name="text">
-                <string>ldpi (x0.5; 80dpi)</string>
+                <string>ldpi (×0.5; 80dpi)</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -125,7 +125,7 @@
              <item>
               <widget class="QCheckBox" name="mdpiCheckBox">
                <property name="text">
-                <string>mdpi (x1.0; 160dpi)</string>
+                <string>mdpi (×1.0; 160dpi)</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -135,7 +135,7 @@
              <item>
               <widget class="QCheckBox" name="hdpiCheckBox">
                <property name="text">
-                <string>hdpi (x1.5; 240dpi)</string>
+                <string>hdpi (×1.5; 240dpi)</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -145,7 +145,7 @@
              <item>
               <widget class="QCheckBox" name="xhdpiCheckBox">
                <property name="text">
-                <string>xhdpi (x2.0; 320dpi)</string>
+                <string>xhdpi (×2.0; 320dpi)</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -155,7 +155,7 @@
              <item>
               <widget class="QCheckBox" name="xxhdpiCheckBox">
                <property name="text">
-                <string>xxhdpi (x3.0; 480dpi)</string>
+                <string>xxhdpi (×3.0; 480dpi)</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -165,7 +165,7 @@
              <item>
               <widget class="QCheckBox" name="xxxhdpiCheckBox">
                <property name="text">
-                <string>xxxhdpi (x4.0; 640dpi)</string>
+                <string>xxxhdpi (×4.0; 640dpi)</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -274,7 +274,7 @@
              <item row="3" column="0">
               <widget class="QLabel" name="contentFolderLabel">
                <property name="text">
-                <string>Content Folder &amp;Prefix:</string>
+                <string>Con&amp;tent Folder Prefix:</string>
                </property>
                <property name="buddy">
                 <cstring>contentFolderComboBox</cstring>

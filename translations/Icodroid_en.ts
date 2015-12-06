@@ -100,37 +100,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>ldpi (x0.5; 80dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>mdpi (x1.0; 160dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>hdpi (x1.5; 240dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>xhdpi (x2.0; 320dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>xxhdpi (x3.0; 480dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>xxxhdpi (x4.0; 640dpi)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+69"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add details about the generated files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -166,7 +136,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="+10"/>
+        <location filename="../mainwindow.ui" line="-82"/>
+        <source>ldpi (×0.5; 80dpi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>mdpi (×1.0; 160dpi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>hdpi (×1.5; 240dpi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>xhdpi (×2.0; 320dpi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>xxhdpi (×3.0; 480dpi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>xxxhdpi (×4.0; 640dpi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+42"/>
         <source>Base &amp;Size (mdpi):</source>
         <translation type="unfinished"></translation>
     </message>
@@ -352,7 +352,7 @@
     <name>PixmapModel</name>
     <message>
         <location filename="../pixmapmodel.cpp" line="+78"/>
-        <source>%1x%2</source>
+        <source>%1×%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
