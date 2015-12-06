@@ -8,7 +8,7 @@
 xcopy .\%2\IcoDroid.exe .\deploy\* /y
 cd deploy
 %1/windeployqt.exe --%2 ./IcoDroid.exe
-xcopy %3\win\qt.conf .\* /y
+xcopy %3\build_scripts\win\qt.conf .\* /y
 xcopy %3\translations\*.qm .\translations\* /y
 
 :EXECUTION:
