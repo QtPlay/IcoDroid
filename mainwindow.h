@@ -26,8 +26,8 @@ private slots:
 	void rowsChanged(int count);
 	void selectionChanged(const QModelIndex &current);
 
-	void on_loadButton_clicked();
-	void on_removeButton_clicked();
+	void on_actionAdd_File_triggered();
+	void on_actionRemove_triggered();
 	void on_iconTypeComboBox_activated(const QString &textName);
 	void on_createButton_clicked();
 

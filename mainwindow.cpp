@@ -30,6 +30,19 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->ui->tabWidget->setCurrentIndex(0);
 	this->ui->loadViewListView->setModel(this->mainModel);
 
+	//setup actions
+	this->ui->loadViewListView->addActions({
+											   this->ui->actionAdd_File,
+											   this->ui->actionRemove,
+											   this->ui->actionClear_All
+										   });
+	this->ui->addIconButton->setDefaultAction(this->ui->actionAdd_File);
+	this->ui->removeIconButton->addActions({
+											   this->ui->actionRemove,
+											   this->ui->actionClear_All
+										   });
+	this->ui->removeIconButton->setDefaultAction(this->ui->actionRemove);
+
 	//restore gui
 	this->settings->beginGroup(QStringLiteral("gui"));
 	this->restoreGeometry(this->settings->value(QStringLiteral("geom")).toByteArray());
@@ -62,6 +75,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(this->mainModel, &PixmapModel::rowsChanged, this, &MainWindow::rowsChanged);
 	connect(this->ui->loadViewListView->selectionModel(), &QItemSelectionModel::currentChanged,
 			this, &MainWindow::selectionChanged);
+	connect(this->ui->actionClear_All, &QAction::triggered, this->mainModel, &PixmapModel::reset);
 
 	//init functions
 	this->on_iconTypeComboBox_activated(this->ui->iconTypeComboBox->currentText());
@@ -111,7 +125,7 @@ void MainWindow::selectionChanged(const QModelIndex &current)
 	this->previewDock->setPreviewIcon(this->mainModel->pixmap(current));
 }
 
-void MainWindow::on_loadButton_clicked()
+void MainWindow::on_actionAdd_File_triggered()
 {
 	QString path = QFileDialog::getOpenFileName(this,
 												tr("Open Icon Archive"),
@@ -121,7 +135,7 @@ void MainWindow::on_loadButton_clicked()
 		openFile(path);
 }
 
-void MainWindow::on_removeButton_clicked()
+void MainWindow::on_actionRemove_triggered()
 {
 	this->mainModel->removeRow(this->ui->loadViewListView->currentIndex().row());
 }
@@ -129,12 +143,14 @@ void MainWindow::on_removeButton_clicked()
 void MainWindow::on_iconTypeComboBox_activated(const QString &textName)
 {
 	this->settings->beginGroup(QStringLiteral("templates"));
-	this->settings->beginGroup(textName);
+	if(this->settings->childGroups().contains(textName)) {
+		this->settings->beginGroup(textName);
 
-	this->ui->baseSizeMdpiSpinBox->setValue(this->settings->value(QStringLiteral("baseSize")).toInt());
-	this->ui->contentFolderComboBox->setCurrentText(this->settings->value(QStringLiteral("folderBaseName")).toString());
+		this->ui->baseSizeMdpiSpinBox->setValue(this->settings->value(QStringLiteral("baseSize")).toInt());
+		this->ui->contentFolderComboBox->setCurrentText(this->settings->value(QStringLiteral("folderBaseName")).toString());
 
-	this->settings->endGroup();
+		this->settings->endGroup();
+	}
 	this->settings->endGroup();
 }
 

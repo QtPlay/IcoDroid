@@ -18,20 +18,23 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="loadTab">
        <attribute name="title">
         <string>Load Icons</string>
        </attribute>
        <attribute name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load the icon file that will be used as a base.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>Load the icon files that will be used as a base</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QListView" name="loadViewListView">
+          <property name="contextMenuPolicy">
+           <enum>Qt::ActionsContextMenu</enum>
+          </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shows a preview of all icons that have been loaded from a file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>Shows a preview of all icons that have been loaded from files</string>
           </property>
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
@@ -48,6 +51,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QCheckBox" name="previewCheckBox">
+            <property name="toolTip">
+             <string>Shows a preview of the currently selected icon</string>
+            </property>
             <property name="text">
              <string>Show &amp;Preview</string>
             </property>
@@ -67,22 +73,25 @@
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="removeButton">
-            <property name="text">
-             <string>Remove Icon</string>
+           <widget class="QToolButton" name="addIconButton">
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="loadButton">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load an icon file to create Android icons from. (Ctrl+O)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <widget class="QToolButton" name="removeIconButton">
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
             </property>
-            <property name="text">
-             <string>Load Icon</string>
-            </property>
-            <property name="shortcut">
-             <string>Ctrl+O</string>
+            <property name="popupMode">
+             <enum>QToolButton::MenuButtonPopup</enum>
             </property>
            </widget>
           </item>
@@ -95,7 +104,7 @@
         <string>Android Configuration</string>
        </attribute>
        <attribute name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Configure and create the Android icons.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>Configure and create the Android icons from the loaded ones</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <property name="bottomMargin">
@@ -106,7 +115,7 @@
           <item>
            <widget class="QGroupBox" name="sizesGroupBox">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the sizes that should be generated.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>Choose the sizes that should be generated</string>
             </property>
             <property name="title">
              <string>Icon Sizes</string>
@@ -178,7 +187,7 @@
           <item>
            <widget class="QGroupBox" name="typeGroupBox">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add details about the generated files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>Add details about the generated files</string>
             </property>
             <property name="title">
              <string>Icon Type</string>
@@ -197,7 +206,7 @@
              <item row="0" column="1">
               <widget class="QComboBox" name="iconTypeComboBox">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choos your profile.&lt;/p&gt;&lt;p&gt;You can add a new by passing a new name and creating an icon.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choos your profile.&lt;/p&gt;&lt;p&gt;You can add a new one by passing a new name and creating an icon. Profiles will be stored permanently. If you modifiy one of the default profiles, those modifications will overwrite the Profile. To avoid this, give it a new name.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="editable">
                 <bool>true</bool>
@@ -217,7 +226,7 @@
              <item row="1" column="1">
               <widget class="QSpinBox" name="baseSizeMdpiSpinBox">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose you base-size. This will be the size of the mdpi-file. All other files will be scaled based on the factors listed on the left.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>Choose you base-size. This will be the size of the mdpi-file. All other files will be scaled based on the factors listed on the left</string>
                </property>
                <property name="accelerated">
                 <bool>true</bool>
@@ -252,7 +261,7 @@
              <item row="2" column="1">
               <widget class="QPathEdit" name="basePathEdit">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose a folder to create the icons folders into.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>Choose a folder to create the icons folders into</string>
                </property>
                <property name="pathMode">
                 <enum>QPathEdit::ExistingFolder</enum>
@@ -284,7 +293,7 @@
              <item row="3" column="1">
               <widget class="QComboBox" name="contentFolderComboBox">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the prefix of the folders.&lt;/p&gt;&lt;p&gt;For example, &amp;quot;drawable&amp;quot; will result in folder names like &amp;quot;drawable-xhdpi&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the prefix of the folders.&lt;/p&gt;&lt;p&gt;For example, &lt;span style=&quot; font-style:italic;&quot;&gt;drawable&lt;/span&gt; will result in folder names like &lt;span style=&quot; font-style:italic;&quot;&gt;drawable-xhdpi&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="editable">
                 <bool>true</bool>
@@ -314,7 +323,7 @@
              <item row="4" column="1">
               <widget class="QLineEdit" name="realFileLineEdit">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the name of the file (&lt;span style=&quot; font-weight:600;&quot;&gt;without&lt;/span&gt; the file-extension, since it will be added automatically). &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the name of the file (&lt;span style=&quot; font-weight:600;&quot;&gt;without&lt;/span&gt; the file-extension, since it will be added automatically)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -344,7 +353,7 @@
              <bool>false</bool>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create the Android icons. (Ctrl+S)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>Create the Android icons. (Ctrl+S)</string>
             </property>
             <property name="text">
              <string>&amp;Create</string>
@@ -376,7 +385,7 @@
         <string>About</string>
        </attribute>
        <attribute name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;About IcoDroid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>About IcoDroid</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1">
         <item>
@@ -457,6 +466,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="aboutButton">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>About Qt</string>
               </property>
@@ -485,6 +497,48 @@
     </item>
    </layout>
   </widget>
+  <action name="actionAdd_File">
+   <property name="icon">
+    <iconset resource="icodroid_res.qrc">
+     <normaloff>:/icons/addIcon.ico</normaloff>:/icons/addIcon.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Add File</string>
+   </property>
+   <property name="toolTip">
+    <string>Load an icon file to add it's icons to the list. (Ctrl+O)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionRemove">
+   <property name="icon">
+    <iconset resource="icodroid_res.qrc">
+     <normaloff>:/icons/remove.ico</normaloff>:/icons/remove.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Remove Icon</string>
+   </property>
+   <property name="toolTip">
+    <string>Removes the currently selected icon from the list</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actionClear_All">
+   <property name="icon">
+    <iconset resource="icodroid_res.qrc">
+     <normaloff>:/icons/clear.ico</normaloff>:/icons/clear.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Clear All</string>
+   </property>
+   <property name="toolTip">
+    <string>Removes all items from the list</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -494,6 +548,8 @@
    <header>qpathedit.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="icodroid_res.qrc"/>
+ </resources>
  <connections/>
 </ui>

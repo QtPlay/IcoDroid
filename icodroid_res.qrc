@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/icons">
         <file alias="main.ico">icons/main.ico</file>
+        <file alias="addIcon.ico">icons/Oxygen-Icons.org-Oxygen-Actions-insert-image.ico</file>
+        <file alias="remove.ico">icons/Oxygen-Icons.org-Oxygen-Actions-list-remove.ico</file>
+        <file alias="clear.ico">icons/Oxygen-Icons.org-Oxygen-Actions-edit-clear.ico</file>
     </qresource>
 </RCC>

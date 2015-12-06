@@ -52,8 +52,8 @@ DISTFILES += \
     .gitignore \
     LICENSE \
     README.md \
-	icons/Fatcow-Farm-Fresh-Android.ico \#original icon from: http://www.fatcow.com/free-icons
-	icons/Visualpharm-Must-Have-Picture.ico \#original icon from: http://www.visualpharm.com/
+	icons/Fatcow-Farm-Fresh-Android.ico \
+	icons/Visualpharm-Must-Have-Picture.ico \
     build_scripts/win/deploy.bat \
     build_scripts/win/translate.bat \
     qt.conf \
@@ -62,7 +62,10 @@ DISTFILES += \
     build_scripts/mac/translate.command \
     build_scripts/mac/dmgInfo.json \
     build_scripts/mac/createDmg.txt \
-    build_scripts/mac/background.png
+    build_scripts/mac/background.png \
+    build_scripts/win/IcoDroid_Setup_x64/Product.wxs \
+    build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.sln \
+    build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.wixproj
 
 RESOURCES += \
 	icodroid_res.qrc

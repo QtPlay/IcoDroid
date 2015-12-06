@@ -45,67 +45,82 @@
         <translation>Icons laden</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load the icon file that will be used as a base.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shows a preview of all icons that have been loaded from a file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+18"/>
+        <location line="+33"/>
         <source>Show &amp;Preview</source>
         <translation>&amp;Vorschau Anzeigen</translation>
     </message>
     <message>
-        <location line="+20"/>
-        <source>Remove Icon</source>
-        <translation>Icon entfernen</translation>
+        <location line="+49"/>
+        <source>Configure and create the Android icons from the loaded ones</source>
+        <translation>Konfigurieren und erstellen Sie die Android-Icons aus den Geladenen</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load an icon file to create Android icons from. (Ctrl+O)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <location line="+11"/>
+        <source>Choose the sizes that should be generated</source>
+        <translation>Wähle sie die Größen aus, welche generiert werden sollen</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Load Icon</source>
-        <translation>Icon laden</translation>
+        <location line="+111"/>
+        <source>Choose you base-size. This will be the size of the mdpi-file. All other files will be scaled based on the factors listed on the left</source>
+        <translation>Wählen Sie die Basis-Größe. Diese Größe entspricht der der mdpi-Datei. Alle anderen werden skaliert basierend auf den aufgelisteten Faktoren</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+35"/>
+        <source>Choose a folder to create the icons folders into</source>
+        <translation>Wählen Sie einen Ordner, in dem die Icon-Ordner erstellt werden sollen</translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the prefix of the folders.&lt;/p&gt;&lt;p&gt;For example, &lt;span style=&quot; font-style:italic;&quot;&gt;drawable&lt;/span&gt; will result in folder names like &lt;span style=&quot; font-style:italic;&quot;&gt;drawable-xhdpi&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wählen sie das Präfix der Ordner.&lt;/p&gt;&lt;p&gt;Zum Beispiel wird &lt;span style=&quot; font-style:italic;&quot;&gt;drawable&lt;/span&gt; als Präfix u.A. in einem Ordner namens &lt;span style=&quot; font-style:italic;&quot;&gt;drawable-xhdpi&lt;/span&gt; resultieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the name of the file (&lt;span style=&quot; font-weight:600;&quot;&gt;without&lt;/span&gt; the file-extension, since it will be added automatically)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Geben sie den Namen der Datei ein (&lt;span style=&quot; font-weight:600;&quot;&gt;ohne&lt;/span&gt; die Datei-Endung, diese wird automatisch hinzugefügt)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <source>Create the Android icons. (Ctrl+S)</source>
+        <translation>Erzeugt die Android-Icons. (Strg+S)</translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>About IcoDroid</source>
+        <translation>Über IcoDroid</translation>
+    </message>
+    <message>
+        <location line="+124"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-408"/>
         <source>Android Configuration</source>
         <translation>Android Konfiguration</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Configure and create the Android icons.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <location line="-76"/>
+        <source>Load the icon files that will be used as a base</source>
+        <translation>Lädt die Icon-Dateien, welche als Basis dienen</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the sizes that should be generated.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <location line="+9"/>
+        <source>Shows a preview of all icons that have been loaded from files</source>
+        <translation>Zeigt eine Vorschau aller Icons an, welche geladen wurden und für die Generierung verwendet werden</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+18"/>
+        <source>Shows a preview of the currently selected icon</source>
+        <translation>Zeigt eine Vorschau des aktuell ausgewählten Icons in Vollgröße</translation>
+    </message>
+    <message>
+        <location line="+66"/>
         <source>Icon Sizes</source>
         <translation>Icons Größen</translation>
     </message>
     <message>
-        <location line="+69"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add details about the generated files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+72"/>
         <source>Icon Type</source>
         <translation>Icon Typ</translation>
     </message>
@@ -115,13 +130,8 @@
         <translation>&amp;Profil:</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choos your profile.&lt;/p&gt;&lt;p&gt;You can add a new by passing a new name and creating an icon.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="+55"/>
-        <location line="+155"/>
+        <location filename="../mainwindow.cpp" line="+68"/>
+        <location line="+158"/>
         <source>Launcher Icon</source>
         <translation></translation>
     </message>
@@ -136,7 +146,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="-82"/>
+        <location filename="../mainwindow.ui" line="-72"/>
         <source>ldpi (×0.5; 80dpi)</source>
         <translation></translation>
     </message>
@@ -166,17 +176,22 @@
         <translation></translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+13"/>
+        <source>Add details about the generated files</source>
+        <translation>Details über die zu generierenden Dateien hinzufügen</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choos your profile.&lt;/p&gt;&lt;p&gt;You can add a new one by passing a new name and creating an icon. Profiles will be stored permanently. If you modifiy one of the default profiles, those modifications will overwrite the Profile. To avoid this, give it a new name.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wählen Sie Ihr Profil.&lt;/p&gt;&lt;p&gt;Sie können neue Profile erzeugen, indem Sie einen Namen eingeben und ein Icon erzeugen. Profile werden dauerhaft gespeichert. Wenn Sie eines der Standard-Profile verändern, so wird dieses permanent überschrieben. Um dies zu verhindern, geben Sie dem Profil einen neuen Namen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location line="+10"/>
         <source>Base &amp;Size (mdpi):</source>
         <translation>Basis-&amp;Größe:</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose you base-size. This will be the size of the mdpi-file. All other files will be scaled based on the factors listed on the left.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+9"/>
+        <location line="+19"/>
         <source>px</source>
         <translation></translation>
     </message>
@@ -186,22 +201,12 @@
         <translation>Basis-&amp;Ordner:</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose a folder to create the icons folders into.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <location line="+32"/>
+        <source>Con&amp;tent Folder Prefix:</source>
+        <translation>&amp;Inhaltsordner-Präfix:</translation>
     </message>
     <message>
-        <location line="+22"/>
-        <source>Content Folder &amp;Prefix:</source>
-        <translation>&amp;Inhalts-Ordner-Präfix:</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the prefix of the folders.&lt;/p&gt;&lt;p&gt;For example, &amp;quot;drawable&amp;quot; will result in folder names like &amp;quot;drawable-xhdpi&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
+        <location line="+17"/>
         <source>drawable</source>
         <translation></translation>
     </message>
@@ -216,17 +221,7 @@
         <translation>Datei&amp;name:</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the name of the file (&lt;span style=&quot; font-weight:600;&quot;&gt;without&lt;/span&gt; the file-extension, since it will be added automatically). &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+30"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create the Android icons. (Ctrl+S)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+43"/>
         <source>&amp;Create</source>
         <translation>&amp;Erzeugen</translation>
     </message>
@@ -241,19 +236,14 @@
         <translation>Über</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;About IcoDroid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
+        <location line="+9"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;IcoDroid&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+7"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A tool to create Android icons from single files like .ico, .png, …&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Werkzeug um Android-Icons aus einzelnen Dateien zu erzeugen, z.B. .ico, .png, …&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -278,74 +268,113 @@
     <message>
         <location line="+7"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Skycoder42/IcoDroid/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/Skycoder42/IcoDroid/releases&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Written with the Qt-Framwork.</source>
-        <translation>.Geschrieben mit dem Qt-Framework</translation>
+        <translation>Geschrieben mit dem Qt-Framework.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+10"/>
         <source>About Qt</source>
         <translation>Über Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="-108"/>
+        <location line="+33"/>
+        <source>Add File</source>
+        <translation>Datei hinzufügen</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Load an icon file to add it&apos;s icons to the list. (Ctrl+O)</source>
+        <translation>Lädt eine Icon-Datei und fügt deren Icons der Liste hinzu. (Strg+O)</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Remove Icon</source>
+        <translation>Icon Entfernen</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="vanished">Entfernen</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Removes the currently selected icon from the list</source>
+        <translation>Entfernt das aktuell ausgewählte Icon aus der Liste</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Del</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Clear All</source>
+        <translation>Alle löschen</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Removes all items from the list</source>
+        <translation>Entfernt alle Icons aus der Liste</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="-110"/>
         <source>Open Icon Archive</source>
         <translation>Icon-Archiv öffnen</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Icon files (*.ico *.icns);;Image Files (*.png *.jpg *.bmp);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Dateien (*.ico *.icns);;Bild-Dateien (*.png *.jpg *.bmp);;Alle Dateien (*)</translation>
     </message>
     <message>
         <location line="-19"/>
-        <location line="+75"/>
+        <location line="+77"/>
         <location line="+12"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="-89"/>
         <source>Unable to open icon &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Icon &quot;%1&quot; konnte nicht geöffnet werden</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+49"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Warnung</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Please enter a valid base path, folder base and file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte einen gültigen Basispfad, Ordner Basis und Dateiname eingeben</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>Failed to create subfolder &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Unterordner &quot;%1&quot; konnte nicht erzeugt werden</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Failed to create file &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Datei &quot;%1&quot; konnte nicht erzeugt werden</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>Erfolg</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Icons successfully exported!</source>
-        <translation type="unfinished"></translation>
+        <translation>Icons erfolgreich exportiert!</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Action Bar, Dialog, Tab</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
