@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="loadTab">
        <attribute name="title">
@@ -46,9 +46,6 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
-          <property name="spacing">
-           <number>0</number>
-          </property>
           <item>
            <widget class="QCheckBox" name="previewCheckBox">
             <property name="text">
@@ -68,6 +65,13 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="removeButton">
+            <property name="text">
+             <string>Remove Icon</string>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="loadButton">

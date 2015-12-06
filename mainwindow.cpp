@@ -121,6 +121,11 @@ void MainWindow::on_loadButton_clicked()
 		openFile(path);
 }
 
+void MainWindow::on_removeButton_clicked()
+{
+	this->mainModel->removeRow(this->ui->loadViewListView->currentIndex().row());
+}
+
 void MainWindow::on_iconTypeComboBox_activated(const QString &textName)
 {
 	this->settings->beginGroup(QStringLiteral("templates"));

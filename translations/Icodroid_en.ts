@@ -55,12 +55,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+18"/>
         <source>Show &amp;Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+20"/>
+        <source>Remove Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load an icon file to create Android icons from. (Ctrl+O)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -146,7 +151,7 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="+55"/>
-        <location line="+150"/>
+        <location line="+155"/>
         <source>Launcher Icon</source>
         <translation type="unfinished"></translation>
     </message>
@@ -286,7 +291,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="-103"/>
+        <location filename="../mainwindow.cpp" line="-108"/>
         <source>Open Icon Archive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -297,18 +302,18 @@
     </message>
     <message>
         <location line="-19"/>
-        <location line="+70"/>
+        <location line="+75"/>
         <location line="+12"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-82"/>
+        <location line="-87"/>
         <source>Unable to open icon &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+47"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
