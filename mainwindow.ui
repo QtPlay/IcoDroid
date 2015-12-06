@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="loadTab">
        <attribute name="title">
@@ -29,7 +29,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QListWidget" name="loadViewListWidget">
+         <widget class="QListView" name="loadViewListView">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shows a preview of all icons that have been loaded from a file&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -198,26 +198,6 @@
                <property name="editable">
                 <bool>true</bool>
                </property>
-               <item>
-                <property name="text">
-                 <string>Launcher Icon</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Action Bar / Dialog / Tab</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Context Menu</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Notification</string>
-                </property>
-               </item>
               </widget>
              </item>
              <item row="1" column="0">
@@ -331,9 +311,6 @@
               <widget class="QLineEdit" name="realFileLineEdit">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the name of the file (&lt;span style=&quot; font-weight:600;&quot;&gt;without&lt;/span&gt; the file-extension, since it will be added automatically). &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>launcher_ic</string>
                </property>
               </widget>
              </item>

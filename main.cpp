@@ -33,6 +33,10 @@ int main(int argc, char *argv[])
 
 	//TODO use the paths passed command line
 	MainWindow w;
+
+	for(QString path : parser.positionalArguments())
+		w.openFile(path);
+
 	w.show();
 
 	return a.exec();

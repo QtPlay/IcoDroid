@@ -38,10 +38,12 @@ win32 {
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    iconviewdockwidget.cpp
+    iconviewdockwidget.cpp \
+    pixmapmodel.cpp
 
 HEADERS  += mainwindow.h \
-    iconviewdockwidget.h
+    iconviewdockwidget.h \
+    pixmapmodel.h
 
 FORMS    += mainwindow.ui \
     iconviewdockwidget.ui

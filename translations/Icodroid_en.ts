@@ -4,7 +4,7 @@
 <context>
     <name>GLOBAL</name>
     <message>
-        <location filename="../main.cpp" line="+43"/>
+        <location filename="../main.cpp" line="+47"/>
         <source>A tool to create Android icons from single files like .ico, .png, …</source>
         <translation type="unfinished"></translation>
     </message>
@@ -145,31 +145,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location filename="../mainwindow.cpp" line="+36"/>
+        <location filename="../mainwindow.cpp" line="+55"/>
+        <location line="+150"/>
         <source>Launcher Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
-        <location filename="../mainwindow.cpp" line="+5"/>
-        <source>Action Bar / Dialog / Tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <location filename="../mainwindow.cpp" line="+5"/>
+        <location line="+10"/>
         <source>Context Menu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../mainwindow.cpp" line="+5"/>
         <source>Notification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location filename="../mainwindow.ui" line="+10"/>
         <source>Base &amp;Size (mdpi):</source>
         <translation type="unfinished"></translation>
     </message>
@@ -221,11 +213,6 @@
     <message>
         <location line="+10"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the name of the file (&lt;span style=&quot; font-weight:600;&quot;&gt;without&lt;/span&gt; the file-extension, since it will be added automatically). &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>launcher_ic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -299,7 +286,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="+64"/>
+        <location filename="../mainwindow.cpp" line="-103"/>
         <source>Open Icon Archive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -309,24 +296,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
-        <source>%1x%2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
-        <location line="+54"/>
+        <location line="-19"/>
+        <location line="+70"/>
         <location line="+12"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-82"/>
         <source>Unable to open icon &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+42"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
@@ -336,7 +318,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+28"/>
         <source>Failed to create subfolder &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -353,6 +335,24 @@
     <message>
         <location line="+0"/>
         <source>Icons successfully exported!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Action Bar, Dialog, Tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PixmapModel</name>
+    <message>
+        <location filename="../pixmapmodel.cpp" line="+78"/>
+        <source>%1x%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>From file: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

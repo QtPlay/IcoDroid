@@ -5,6 +5,7 @@
 #include <QSettings>
 #include <QListWidgetItem>
 #include "iconviewdockwidget.h"
+#include "pixmapmodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,18 +19,27 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 
+public slots:
+	void openFile(QString path);
+
 private slots:
+	void rowsChanged(int count);
+	void selectionChanged(const QModelIndex &current);
+
 	void on_loadButton_clicked();
-	void on_loadViewListWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *);
 	void on_iconTypeComboBox_activated(const QString &textName);
 	void on_createButton_clicked();
+
+private /*functions*/:
+	void initSettings();
+
+	QString stripSlash(QString base);
 
 private:
 	Ui::MainWindow *ui;
 	QSettings *settings;
+	PixmapModel *mainModel;
 	IconViewDockWidget *previewDock;
-
-	QIcon mainIcon;
 };
 
 #endif // MAINWINDOW_H

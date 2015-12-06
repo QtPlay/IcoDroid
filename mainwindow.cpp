@@ -16,52 +16,19 @@ MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow),
 	settings(new QSettings(this)),
-	previewDock(new IconViewDockWidget(this)),
-	mainIcon()
+	mainModel(new PixmapModel(this)),
+	previewDock(new IconViewDockWidget(this))
 {
-	this->settings->beginGroup(QStringLiteral("paths"));
-	if(!this->settings->contains(QStringLiteral("openPath"))) {
-		this->settings->setValue(QStringLiteral("openPath"),
-								 QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
-	}
-	if(!this->settings->contains(QStringLiteral("savePath"))) {
-		this->settings->setValue(QStringLiteral("savePath"),
-								 QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
-	}
-	this->settings->endGroup();
+	this->initSettings();
 
-	this->settings->beginGroup(QStringLiteral("templates"));
-	if(this->settings->childGroups().isEmpty()) {
-		//Create "Launcher Icon"
-		this->settings->beginGroup(tr("Launcher Icon"));
-		this->settings->setValue(QStringLiteral("baseSize"), 48);
-		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
-		this->settings->endGroup();
-		//Create "Action Bar / Dialog / Tab"
-		this->settings->beginGroup(tr("Action Bar / Dialog / Tab"));
-		this->settings->setValue(QStringLiteral("baseSize"), 24);
-		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
-		this->settings->endGroup();
-		//Create "Context Menu"
-		this->settings->beginGroup(tr("Context Menu"));
-		this->settings->setValue(QStringLiteral("baseSize"), 16);
-		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
-		this->settings->endGroup();
-		//Create "Notification"
-		this->settings->beginGroup(tr("Notification"));
-		this->settings->setValue(QStringLiteral("baseSize"), 22);
-		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
-		this->settings->endGroup();
-	}
-	this->settings->endGroup();
-
-	ui->setupUi(this);
+	//setup basic ui
+	this->ui->setupUi(this);
 	this->addDockWidget(Qt::RightDockWidgetArea, this->previewDock);
 	this->previewDock->hide();
 	this->ui->basePathEdit->setDefaultDirectory(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
-	this->ui->basePathEdit->setPath(this->settings->value(QStringLiteral("paths/savePath")).toString());
 	this->ui->versionLabel->setText(QCoreApplication::applicationVersion());
 	this->ui->tabWidget->setCurrentIndex(0);
+	this->ui->loadViewListView->setModel(this->mainModel);
 
 	//restore gui
 	this->settings->beginGroup(QStringLiteral("gui"));
@@ -70,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->restoreDockWidget(this->previewDock);
 	this->settings->endGroup();
 
-	//restore dpi-states
+	//restore dpi-states and ohter settings values
 	this->settings->beginGroup(QStringLiteral("dpiRates"));
 	this->ui->ldpiCheckBox->setChecked(this->settings->value(QStringLiteral("ldpi"), true).toBool());
 	this->ui->mdpiCheckBox->setChecked(this->settings->value(QStringLiteral("mdpi"), true).toBool());
@@ -79,12 +46,25 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->ui->xxhdpiCheckBox->setChecked(this->settings->value(QStringLiteral("xxhdpi"), true).toBool());
 	this->ui->xxxhdpiCheckBox->setChecked(this->settings->value(QStringLiteral("xxxhdpi"), true).toBool());
 	this->settings->endGroup();
+	this->ui->basePathEdit->setPath(this->settings->value(QStringLiteral("paths/savePath")).toString());
+
+	//restore all custom profiles
+	this->settings->beginGroup(QStringLiteral("templates"));
+	this->ui->iconTypeComboBox->addItems(this->settings->childGroups());
+	this->settings->endGroup();
+	this->ui->iconTypeComboBox->setCurrentText(this->settings->value(QStringLiteral("recentProfile"), tr("Launcher Icon")).toString());
 
 	//connections
 	connect(this->ui->aboutButton, &QPushButton::clicked, qApp, &QApplication::aboutQt);
 	connect(this->ui->previewCheckBox, &QCheckBox::clicked, this->previewDock, &IconViewDockWidget::setVisible);
 	connect(this->previewDock, &IconViewDockWidget::visibilityChanged, this->ui->previewCheckBox, &QCheckBox::setChecked);
 	this->ui->previewCheckBox->setChecked(this->previewDock->isVisible());
+	connect(this->mainModel, &PixmapModel::rowsChanged, this, &MainWindow::rowsChanged);
+	connect(this->ui->loadViewListView->selectionModel(), &QItemSelectionModel::currentChanged,
+			this, &MainWindow::selectionChanged);
+
+	//init functions
+	this->on_iconTypeComboBox_activated(this->ui->iconTypeComboBox->currentText());
 }
 
 MainWindow::~MainWindow()
@@ -95,7 +75,7 @@ MainWindow::~MainWindow()
 	this->settings->setValue(QStringLiteral("state"), this->saveState());
 	this->settings->endGroup();
 
-	//save dpi-states
+	//save dpi-states and profile
 	this->settings->beginGroup(QStringLiteral("dpiRates"));
 	this->settings->setValue(QStringLiteral("ldpi"), this->ui->ldpiCheckBox->isChecked());
 	this->settings->setValue(QStringLiteral("mdpi"), this->ui->mdpiCheckBox->isChecked());
@@ -104,9 +84,31 @@ MainWindow::~MainWindow()
 	this->settings->setValue(QStringLiteral("xxhdpi"), this->ui->xxhdpiCheckBox->isChecked());
 	this->settings->setValue(QStringLiteral("xxxhdpi"), this->ui->xxxhdpiCheckBox->isChecked());
 	this->settings->endGroup();
+	this->settings->setValue(QStringLiteral("recentProfile"), this->ui->iconTypeComboBox->currentText());
 
-	this->settings->sync();
-	delete ui;
+	delete this->ui;
+}
+
+void MainWindow::openFile(QString path)
+{
+	QIcon newIcon(path);
+	if(!newIcon.isNull()) {
+		this->settings->setValue(QStringLiteral("paths/openPath"), path);
+		this->mainModel->appendIcon(newIcon, path);
+		this->ui->realFileLineEdit->setText(QFileInfo(path).baseName());
+	} else {
+		QMessageBox::critical(this, tr("Error"), tr("Unable to open icon \"%1\"").arg(path));
+	}
+}
+
+void MainWindow::rowsChanged(int count)
+{
+	this->ui->createButton->setEnabled(count > 0);
+}
+
+void MainWindow::selectionChanged(const QModelIndex &current)
+{
+	this->previewDock->setPreviewIcon(this->mainModel->pixmap(current));
 }
 
 void MainWindow::on_loadButton_clicked()
@@ -115,31 +117,8 @@ void MainWindow::on_loadButton_clicked()
 												tr("Open Icon Archive"),
 												this->settings->value(QStringLiteral("paths/openPath")).toString(),
 												tr("Icon files (*.ico *.icns);;Image Files (*.png *.jpg *.bmp);;All Files (*)"));
-	if(!path.isEmpty()) {
-		this->mainIcon = QIcon(path);
-		if(!this->mainIcon.isNull()) {
-			this->settings->setValue(QStringLiteral("paths/openPath"), path);
-			this->ui->createButton->setEnabled(true);
-			this->ui->loadViewListWidget->clear();
-			this->ui->realFileLineEdit->setText(QFileInfo(path).baseName());
-
-			for(QSize realSize : this->mainIcon.availableSizes()) {
-				QListWidgetItem *item = new QListWidgetItem(this->ui->loadViewListWidget);
-				QPixmap pixmap = this->mainIcon.pixmap(realSize);
-				item->setIcon(pixmap);
-				item->setText(tr("%1x%2").arg(realSize.width()).arg(realSize.height()));
-				item->setData(Qt::UserRole, pixmap);
-			}
-		} else {
-			QMessageBox::critical(this, tr("Error"), tr("Unable to open icon \"%1\"").arg(path));
-		}
-	}
-}
-
-void MainWindow::on_loadViewListWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *)
-{
-	if(current)
-		this->previewDock->setPreviewIcon(current->data(Qt::UserRole).value<QPixmap>());
+	if(!path.isEmpty())
+		openFile(path);
 }
 
 void MainWindow::on_iconTypeComboBox_activated(const QString &textName)
@@ -165,10 +144,13 @@ void MainWindow::on_createButton_clicked()
 	}
 
 	this->settings->setValue(QStringLiteral("paths/savePath"), pathBase);
+	this->settings->beginGroup(QStringLiteral("templates"));
 	this->settings->beginGroup(this->ui->iconTypeComboBox->currentText());
 	this->settings->setValue(QStringLiteral("baseSize"), this->ui->baseSizeMdpiSpinBox->value());
 	this->settings->setValue(QStringLiteral("folderBaseName"), this->ui->contentFolderComboBox->currentText());
 	this->settings->endGroup();
+	this->settings->endGroup();
+	this->ui->iconTypeComboBox->addItem(this->ui->iconTypeComboBox->currentText());
 
 	QSize baseSize = {this->ui->baseSizeMdpiSpinBox->value(), this->ui->baseSizeMdpiSpinBox->value()};
 	QVector<ScaleInfo> checkMap = {
@@ -191,7 +173,7 @@ void MainWindow::on_createButton_clicked()
 			targetDir.cd(fullSubFolder);
 
 			QSize realSize = baseSize * checkMap[i].scaleFactor;
-			QPixmap targetPix = this->mainIcon.pixmap(realSize);
+			QPixmap targetPix = this->mainModel->findBestPixmap(realSize);
 			if(targetPix.size() != realSize)
 				targetPix = targetPix.scaled(realSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
@@ -204,4 +186,41 @@ void MainWindow::on_createButton_clicked()
 	}
 
 	QMessageBox::information(this, tr("Success"), tr("Icons successfully exported!"));
+}
+
+void MainWindow::initSettings()
+{
+	if(this->settings->value(QStringLiteral("isFirstStart"), true).toBool()) {
+		this->settings->setValue(QStringLiteral("isFirstStart"), false);
+
+		this->settings->beginGroup(QStringLiteral("paths"));
+		this->settings->setValue(QStringLiteral("openPath"),
+								 QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
+		this->settings->setValue(QStringLiteral("savePath"),
+								 QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
+		this->settings->endGroup();
+
+		this->settings->beginGroup(QStringLiteral("templates"));
+		//Create "Launcher Icon"
+		this->settings->beginGroup(tr("Launcher Icon"));
+		this->settings->setValue(QStringLiteral("baseSize"), 48);
+		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
+		this->settings->endGroup();
+		//Create "Action Bar / Dialog / Tab"
+		this->settings->beginGroup(tr("Action Bar, Dialog, Tab"));
+		this->settings->setValue(QStringLiteral("baseSize"), 24);
+		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
+		this->settings->endGroup();
+		//Create "Context Menu"
+		this->settings->beginGroup(tr("Context Menu"));
+		this->settings->setValue(QStringLiteral("baseSize"), 16);
+		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
+		this->settings->endGroup();
+		//Create "Notification"
+		this->settings->beginGroup(tr("Notification"));
+		this->settings->setValue(QStringLiteral("baseSize"), 22);
+		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
+		this->settings->endGroup();
+		this->settings->endGroup();
+	}
 }
