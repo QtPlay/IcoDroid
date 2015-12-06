@@ -1,0 +1,9 @@
+Package: IcoDroid
+Version: 1.0.0
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 60000
+Maintainer: Skycoder Soft
+Description: A tool to create Android icons from single files like .ico, .png, ...

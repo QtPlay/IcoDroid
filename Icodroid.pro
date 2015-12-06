@@ -5,10 +5,12 @@
 #-------------------------------------------------
 
 QT       += core gui
+CONFIG += C++11
 
 #Download newest version from: https://github.com/Skycoder42/QPathEdit
 win32: include(C:/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 else:mac: include(/Library/C++Libraries/Qt/QPathEdit/qpathedit.pri)
+else:unix:include(/lib/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -33,6 +35,12 @@ win32 {
 
 	DEFINES += "COMPANY=\"\\\"Skycoder Soft\\\"\""
 	DEFINES += "DISPLAY_NAME=\"\\\"IcoDroid\\\"\""
+} else:unix {
+	DEFINES += "COMPANY=\"\\\"Skycoder Soft\\\"\""
+	DEFINES += "DISPLAY_NAME=\"\\\"IcoDroid\\\"\""
+
+	QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
+	QMAKE_LFLAGS += '-Wl,-rpath,\'/usr/lib/Qt5\''
 }
 
 
@@ -55,8 +63,7 @@ DISTFILES += \
 	icons/Fatcow-Farm-Fresh-Android.ico \
 	icons/Visualpharm-Must-Have-Picture.ico \
     build_scripts/win/deploy.bat \
-    build_scripts/win/translate.bat \
-    qt.conf \
+	build_scripts/win/translate.bat \
     icons/main.icns \
     build_scripts/mac/deploy.command \
     build_scripts/mac/translate.command \
@@ -65,7 +72,14 @@ DISTFILES += \
     build_scripts/mac/background.png \
     build_scripts/win/IcoDroid_Setup_x64/Product.wxs \
     build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.sln \
-    build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.wixproj
+    build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.wixproj \
+    build_scripts/linux/translate.sh \
+    build_scripts/linux/deploy.sh \
+    build_scripts/mac/qt.conf \
+    build_scripts/win/qt.conf \
+    build_scripts/linux/qt.conf \
+    build_scripts/linux/control \
+    build_scripts/linux/pack.sh
 
 RESOURCES += \
 	icodroid_res.qrc
