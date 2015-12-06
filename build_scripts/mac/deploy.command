@@ -13,9 +13,10 @@ $1/bin/macdeployqt IcoDroid.app
 
 mkdir -p ./IcoDroid.app/Contents/translations
 cp $3/translations/*.qm ./IcoDroid.app/Contents/translations/
-cp $1/translations/qt_*.qm ./IcoDroid.app/Contents/translations/
-rm ./IcoDroid.app/Contents/translations/qt_help*.qm
-cp $1/translations/qtbase_*.qm ./IcoDroid.app/Contents/translations/
+cp $1/translations/qt_de.qm ./IcoDroid.app/Contents/translations/
+cp $1/translations/qt_en.qm ./IcoDroid.app/Contents/translations/
+cp $1/translations/qtbase_de.qm ./IcoDroid.app/Contents/translations/
+cp $1/translations/qtbase_en.qm ./IcoDroid.app/Contents/translations/
 
 mkdir -p ./IcoDroid.app/Contents/Resources
 cp $3/qt.conf ./IcoDroid.app/Contents/Resources/qt.conf
