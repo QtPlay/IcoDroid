@@ -12,15 +12,15 @@ cd deploy
 
 #.so files
 mkdir ./lib
-cp -av $1/lib/libQt5Widgets.so* ./lib/
-cp -av $1/lib/libQt5Gui.so* ./lib/
-cp -av $1/lib/libQt5Svg.so* ./lib/
-cp -av $1/lib/libQt5Core.so* ./lib/
-cp -av $1/lib/libQt5XcbQpa.so* ./lib/
-cp -av $1/lib/libQt5DBus.so* ./lib/
-cp -av $1/lib/libicui18n.so* ./lib/
-cp -av $1/lib/libicuuc.so* ./lib/
-cp -av $1/lib/libicudata.so* ./lib/
+cp -a $1/lib/libQt5Widgets.so* ./lib/
+cp -a $1/lib/libQt5Gui.so* ./lib/
+cp -a $1/lib/libQt5Svg.so* ./lib/
+cp -a $1/lib/libQt5Core.so* ./lib/
+cp -a $1/lib/libQt5XcbQpa.so* ./lib/
+cp -a $1/lib/libQt5DBus.so* ./lib/
+cp -a $1/lib/libicui18n.so* ./lib/
+cp -a $1/lib/libicuuc.so* ./lib/
+cp -a $1/lib/libicudata.so* ./lib/
 
 #plugins
 mkdir ./plugins

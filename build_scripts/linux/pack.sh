@@ -7,13 +7,9 @@ rm -r ./packing
 mkdir -p ./packing/IcoDroid/DEBIAN
 cp $1/build_scripts/linux/control ./packing/IcoDroid/DEBIAN/control
 
-mkdir -p ./packing/IcoDroid/usr/bin/IcoDroid
-
-cp ./deploy/IcoDroid ./packing/IcoDroid/usr/bin/IcoDroid/IcoDroid
-cp ./deploy/qt.conf ./packing/IcoDroid/usr/bin/IcoDroid/qt.conf
-cp -r ./deploy/translations ./packing/IcoDroid/usr/bin/IcoDroid/translations/
-cp -r ./deploy/lib/ ./packing/IcoDroid/usr/lib/
-cp -r ./deploy/plugins/ ./packing/IcoDroid/usr/qt5_plugins/
+mkdir -p ./packing/IcoDroid/usr/bin
+cp -r ./deploy ./packing/IcoDroid/usr/IcoDroid/
+ln -s ../IcoDroid/IcoDroid ./packing/IcoDroid/usr/bin/IcoDroid
 
 cd ./packing
 dpkg-deb --build ./IcoDroid
