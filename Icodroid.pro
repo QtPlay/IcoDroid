@@ -78,7 +78,8 @@ DISTFILES += \
     build_scripts/win/qt.conf \
     build_scripts/linux/qt.conf \
     build_scripts/linux/control \
-    build_scripts/linux/pack.sh
+    build_scripts/linux/pack.sh \
+    build_scripts/win/LICENSE.rtf
 
 RESOURCES += \
 	icodroid_res.qrc

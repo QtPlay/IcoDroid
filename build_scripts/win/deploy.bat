@@ -4,11 +4,21 @@
 :%3: %{sourceDir}
 :workingdir: %{buildDir}
 @echo off
+rmdir .\deploy /s /q
 
 xcopy .\%2\IcoDroid.exe .\deploy\* /y
 cd deploy
 %1/windeployqt.exe --%2 ./IcoDroid.exe
+
+cd translations
+ren *_de.qm *_de.mqtmp
+ren *_en.qm *_en.mqtmp
+del *.qm
+ren *.mqtmp *.qm
+cd ..
+
 xcopy %3\build_scripts\win\qt.conf .\* /y
+xcopy %3\build_scripts\win\LICENSE.rtf .\* /y
 xcopy %3\translations\*.qm .\translations\* /y
 
 :EXECUTION:
