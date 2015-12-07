@@ -12,4 +12,4 @@ cp -r ./deploy ./packing/IcoDroid/usr/IcoDroid/
 ln -s ../IcoDroid/IcoDroid ./packing/IcoDroid/usr/bin/IcoDroid
 
 cd ./packing
-dpkg-deb --build ./IcoDroid
+fakeroot dpkg-deb --build ./IcoDroid
