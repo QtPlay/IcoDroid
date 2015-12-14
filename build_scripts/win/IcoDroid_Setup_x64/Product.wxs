@@ -3,7 +3,8 @@
   <?define Manufactor = "Felix Barz"?>
   <?define UpgradeGuid = "{2C26A120-EEA0-4AF1-9CD1-345E01A50C4E}"?>
   <?define Version = "1.0.0.0"?>
-  <?define DeployPath = "C:\Users\Felix\Programming\QtProjects\build-Icodroid-Desktop_Qt_5_5_1_MSVC2013_64bit-Release\deploy\"?>
+  <?define DeployPath = "C:\Users\Felix\ProgrammingProjects\QtProjects\build-Icodroid-Desktop_Qt_5_5_1_MSVC2013_64bit-Release\deploy\"?>
+  <!--<?define DeployPath = "C:\Users\Felix\Programming\QtProjects\build-Icodroid-Desktop_Qt_5_5_1_MSVC2013_64bit-Release\deploy\"?>-->
 
   <Product
     Id="*"
