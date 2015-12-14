@@ -3,7 +3,7 @@
   <?define Manufactor = "Felix Barz"?>
   <?define UpgradeGuid = "{2C26A120-EEA0-4AF1-9CD1-345E01A50C4E}"?>
   <?define Version = "1.0.0.0"?>
-  <?define DeployPath = "C:\Users\Felix\ProgrammingProjects\QtProjects\build-Icodroid-Desktop_Qt_5_5_1_MSVC2013_64bit-Release\deploy\"?>
+  <?define DeployPath = "C:\Users\Felix\Programming\QtProjects\build-Icodroid-Desktop_Qt_5_5_1_MSVC2013_64bit-Release\deploy\"?>
 
   <Product
     Id="*"
@@ -160,7 +160,7 @@
       </Directory>
     </Directory>
 
-    <Feature Id="MainFeature" Title="IcoDroid" Absent="disallow" Description="The program itself" Level="1">
+    <Feature Id="MainFeature" Title="IcoDroid" Absent="disallow" Description="The program itself" ConfigurableDirectory="APPLICATIONFOLDER" Level="1">
       <ComponentRef Id="d3dcompiler_47.dll_component" />
       <ComponentRef Id="IcoDroid.exe_component" />
       <ComponentRef Id="libEGL.dll_component" />
@@ -186,21 +186,24 @@
       <ComponentRef Id="qwbmp.dll_component" />
       <ComponentRef Id="qwebp.dll_component" />
     </Feature>
-    <Feature Id="Translations" Title="Translations" Description="different translations" Level="1">
-      <Feature Id="Translations_en" Title="English Translations" Absent="disallow" Description="English translations" Level="1">
+    <Feature Id="Translations" Title="Translations" AllowAdvertise="no" Description="different translations" Level="1">
+      <Feature Id="Translations_en" Title="English Translations" AllowAdvertise="no" Absent="disallow" Description="English translations" Level="1">
         <ComponentRef Id="qt_en.qm_component" />
       </Feature>
-      <Feature Id="Translations_de" Title="German Translations" Absent="allow" Description="German translations" Level="1">
+      <Feature Id="Translations_de" Title="German Translations" AllowAdvertise="no" Absent="allow" Description="German translations" Level="5">
         <ComponentRef Id="qt_de.qm_component" />
         <ComponentRef Id="Icodroid_de.qm_component" />
       </Feature>
     </Feature>
-    <Feature Id="ShortcutFeature" Title="Desktop Shortcut" Absent="allow"  Description="A shortcut on the desktop to the application"  Level="1">
+    <Feature Id="ShortcutFeature" Title="Desktop Shortcut" AllowAdvertise="no" Absent="allow"  Description="A shortcut on the desktop to the application"  Level="1">
       <ComponentRef Id="DesktopShortcut" />
     </Feature>
-    <Feature Id="ProgramsMenuFeature" Title="Programs Menu Entry" Absent="allow"  Description="Creates an entry inside of the programs menu"  Level="1">
+    <Feature Id="ProgramsMenuFeature" Title="Programs Menu Entry" AllowAdvertise="no" Absent="allow"  Description="Creates an entry inside of the programs menu"  Level="1">
       <ComponentRef Id="ProgramsMenuComponent" />
     </Feature>
+    
+    <Icon Id="icon.ico" SourceFile="$(var.DeployPath)main.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
 
     <!-- Keinen Downgrade zulassen -->
     <CustomAction Id="PreventDowngrading" Error="A newer version of IcoDroid is already installed." />
@@ -208,27 +211,21 @@
     <Binary Id="vcredist_x64.exe" SourceFile="$(var.DeployPath)vcredist_x64.exe"/>
     <CustomAction Id="LaunchVcredist" BinaryKey="vcredist_x64.exe" ExeCommand="/quiet /norestart" Execute='deferred' Return='ignore' Impersonate='no'/>
     
-    <CustomAction Id="Overwrite_WixSetDefaultPerMachineFolder" Property="WixPerMachineFolder" Value="[ProgramFiles64Folder][ApplicationFolderName]" Execute="immediate" />
-
     <Property Id="ApplicationFolderName" Value="IcoDroid" />
-    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
-    <SetProperty Id="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" After="CostFinalize" />
 
     <InstallExecuteSequence>
-      <Custom Action="Overwrite_WixSetDefaultPerMachineFolder" After="WixSetDefaultPerMachineFolder" />
       <Custom Action="PreventDowngrading" After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
       <Custom Action='LaunchVcredist' After='InstallFiles'>NOT REMOVE</Custom>
       <RemoveExistingProducts After="InstallFinalize" />
     </InstallExecuteSequence>
 
     <InstallUISequence>
-      <Custom Action="Overwrite_WixSetDefaultPerMachineFolder" After="WixSetDefaultPerMachineFolder" />
       <Custom Action="PreventDowngrading" After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
     </InstallUISequence>
 
     <WixVariable Id='WixUILicenseRtf' Overridable='yes' Value='$(var.DeployPath)LICENSE.rtf'/>
 
-    <UIRef Id="WixUI_Advanced" />
+    <UIRef Id="WixUI_Mondo" />
     <UIRef Id="WixUI_ErrorProgressText" />
   </Product>
 </Wix>

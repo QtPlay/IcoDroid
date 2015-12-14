@@ -19,6 +19,7 @@ cd ..
 
 xcopy %3\build_scripts\win\qt.conf .\* /y
 xcopy %3\build_scripts\win\LICENSE.rtf .\* /y
+xcopy %3\icons\main.ico .\* /y
 xcopy %3\translations\*.qm .\translations\* /y
 
 :EXECUTION:
