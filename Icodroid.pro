@@ -53,7 +53,7 @@ HEADERS  += mainwindow.h \
     pixmapmodel.h
 
 FORMS    += mainwindow.ui \
-    iconviewdockwidget.ui
+	iconviewdockwidget.ui
 
 DISTFILES += \
     .gitignore \
@@ -70,7 +70,13 @@ DISTFILES += \
     build_scripts/linux/deploy.sh \
     build_scripts/mac/qt.conf \
     build_scripts/win/qt.conf \
-    build_scripts/linux/qt.conf
+    build_scripts/linux/qt.conf \
+    build_scripts/win/install.bat \
+    build_scripts/win/package.xml \
+    build_scripts/win/config.xml \
+	build_scripts/win/uninstallcontrol.qs \
+	build_scripts/win/shortcutPage.ui \
+    build_scripts/win/install.qs
 
 RESOURCES += \
 	icodroid_res.qrc
