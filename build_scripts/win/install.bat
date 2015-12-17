@@ -11,13 +11,13 @@ move /y .\deploy .\install\packages\com.SkycoderSoft.IcoDroid\data
 cd .\install
 
 :config
-xcopy %2\build_scripts\win\config.xml .\config\* /y
-xcopy %2\build_scripts\win\uninstallcontrol.qs .\config\* /y
+xcopy %2\setup\config.xml .\config\* /y
+xcopy %2\setup\uninstallcontrol.qs .\config\* /y
 
 :package
-xcopy %2\build_scripts\win\package.xml .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
-xcopy %2\build_scripts\win\install.qs .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
-xcopy %2\build_scripts\win\shortcutPage.ui .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
+xcopy %2\setup\package.xml .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
+xcopy %2\setup\install.qs .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
+xcopy %2\setup\shortcutPage.ui .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\LICENSE .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 
 %1\bin\binarycreator.exe -c config\config.xml -p packages IcoDroid_1.0.0_x64_setup.exe

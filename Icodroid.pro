@@ -72,11 +72,12 @@ DISTFILES += \
     build_scripts/win/qt.conf \
     build_scripts/linux/qt.conf \
     build_scripts/win/install.bat \
-    build_scripts/win/package.xml \
-    build_scripts/win/config.xml \
-	build_scripts/win/uninstallcontrol.qs \
-	build_scripts/win/shortcutPage.ui \
-    build_scripts/win/install.qs
+	setup/package.xml \
+	setup/config.xml \
+	setup/uninstallcontrol.qs \
+	setup/shortcutPage.ui \
+	setup/install.qs \
+    build_scripts/mac/install.command
 
 RESOURCES += \
 	icodroid_res.qrc
