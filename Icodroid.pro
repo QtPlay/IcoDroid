@@ -66,20 +66,11 @@ DISTFILES += \
     icons/main.icns \
     build_scripts/mac/deploy.command \
     build_scripts/mac/translate.command \
-    build_scripts/mac/dmgInfo.json \
-    build_scripts/mac/createDmg.txt \
-    build_scripts/mac/background.png \
-    build_scripts/win/IcoDroid_Setup_x64/Product.wxs \
-    build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.sln \
-    build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.wixproj \
     build_scripts/linux/translate.sh \
     build_scripts/linux/deploy.sh \
     build_scripts/mac/qt.conf \
     build_scripts/win/qt.conf \
-    build_scripts/linux/qt.conf \
-    build_scripts/linux/control \
-    build_scripts/linux/pack.sh \
-    build_scripts/win/LICENSE.rtf
+    build_scripts/linux/qt.conf
 
 RESOURCES += \
 	icodroid_res.qrc
