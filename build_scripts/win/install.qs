@@ -16,13 +16,13 @@ Component.prototype.createOperations = function()
 		var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
 		if (pageWidget != null) {
 			if(pageWidget.shortcutCheckBox.checked) {
-				component.addOperation("CreateShortcut", "@TargetDir@/IcoDroid.exe", "@DesktopDir@/IcoDroid");
+				if (installer.value("os") === "win")
+					component.addOperation("CreateShortcut", "@TargetDir@/IcoDroid.exe", "@DesktopDir@/IcoDroid.lnk");
 			}
 		}
 
-		if (installer.value("os") === "win") {
+		if (installer.value("os") === "win")
 			component.addElevatedOperation("Execute", "@TargetDir@/vcredist_x64.exe", "/quiet", "/norestart");
-		}
 
 	} catch (e) {
 		print(e);
