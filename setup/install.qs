@@ -1,16 +1,17 @@
 function Component()
 {
-	if (installer.value("os") === "win") {//TODO check
-		var programFiles = installer.value("TargetDir");
-		if(programFiles.indexOf(" x(x86)") > -1) {
-			var index = programFiles.replace(" x(x86)", "");
-			installer.setValue("TargetDir", programFiles);
+	var orgFolder = installer.value("TargetDir");
+	if (installer.value("os") === "win") {
+		var programFiles = installer.environmentVariable("ProgramW6432");
+		if(programFiles.length == 0) {
+			QMessageBox.critical("os.not64", "Error", "This Program is an 64bit Program. You can't install it on a 32bit machine");
+			gui.rejectWithoutPrompt();
+		} else {
+			var localProgFiles = installer.environmentVariable("ProgramFiles");
+			installer.setValue("TargetDir", orgFolder.replace(localProgFiles, programFiles));
 		}
-	} else if(installer.value("os") === "mac") {
-		var appFolder = installer.value("TargetDir");
-		appFolder += ".app";
-		installer.setValue("TargetDir", appFolder);
-	}
+	} else if(installer.value("os") === "mac")
+		installer.setValue("TargetDir", orgFolder + ".app");
 
 	installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
 }
@@ -23,10 +24,10 @@ Component.prototype.createOperations = function()
 		var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
 		if (pageWidget != null) {
 			if(pageWidget.shortcutCheckBox.checked) {
-				if (installer.value("os") === "win")//TODO test
+				if (installer.value("os") === "win")
 					component.addOperation("CreateShortcut", "@TargetDir@/@ProductName@.exe", "@DesktopDir@/@ProductName@.lnk");
-				else if (installer.value("os") === "mac")
-					component.addOperation("CreateShortcut", "@TargetDir@/@ProductName@.app", "@DesktopDir@/@ProductName@");
+				else if (installer.value("os") === "mac")//TODO test
+					component.addOperation("CreateShortcut", "@TargetDir@", "@DesktopDir@/@ProductName@.app");
 			}
 		}
 
