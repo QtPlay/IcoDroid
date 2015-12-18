@@ -3,7 +3,7 @@ function Component()
     var orgFolder = installer.value("TargetDir");
     if (installer.value("os") === "win") {
         var programFiles = installer.environmentVariable("ProgramW6432");
-        if(programFiles.length == 0) {
+        if(programFiles.length === 0) {
             QMessageBox.critical("os.not64", "Error", "This Program is an 64bit Program. You can't install it on a 32bit machine");
             gui.rejectWithoutPrompt();
         } else {
@@ -25,13 +25,16 @@ Component.prototype.createOperations = function()
         if (pageWidget !== null) {
             if(pageWidget.shortcutCheckBox.checked) {
                 if (installer.value("os") === "win")
-                    component.addOperation("CreateShortcut", "@TargetDir@/@ProductName@.exe", "@DesktopDir@/@ProductName@.lnk");
+                    component.addOperation("CreateShortcut", "@TargetDir@/IcoDroid.exe", "@DesktopDir@/IcoDroid.lnk");
                 else if (installer.value("os") === "mac")//TODO test
-                    component.addOperation("CreateShortcut", "@TargetDir@", "@DesktopDir@/@ProductName@.app");
+                    component.addOperation("CreateShortcut", "@TargetDir@", "@DesktopDir@/IcoDroid.app");
             }
         }
 
         if (installer.value("os") === "win") {
+            component.addOperation("CreateShortcut", "@TargetDir@/IcoDroid.exe", "@StartMenuDir@/IcoDroid.lnk");
+            component.addOperation("CreateShortcut", "@TargetDir@/Uninstall.exe", "@StartMenuDir@/Uninstall.lnk");
+
             component.addElevatedOperation("Execute", "@TargetDir@/vcredist_x64.exe", "/quiet", "/norestart");
             component.addElevatedOperation("Delete", "@TargetDir@/vcredist_x64.exe");
         }
