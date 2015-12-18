@@ -21,4 +21,4 @@ cp $2/setup/shortcutPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/LICENSE ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/icons/main.png ./packages/com.SkycoderSoft.IcoDroid/data/
 
-$1/bin/binarycreator -f -c config/config.xml -p packages IcoDroid_1.0.0_setup
+$1/bin/binarycreator -f -c config/config.xml -p packages IcoDroid_1.0.0_setup.run
