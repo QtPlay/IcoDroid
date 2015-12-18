@@ -40,7 +40,6 @@ cp $1/translations/qtbase_de.qm ./translations/
 cp $1/translations/qtbase_en.qm ./translations/
 
 cp $3/build_scripts/linux/qt.conf ./qt.conf
-cp $3/LICENSE ./LICENSE
 cd ..
 
 #EXECUTION:

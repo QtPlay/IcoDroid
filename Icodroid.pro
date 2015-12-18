@@ -78,7 +78,9 @@ DISTFILES += \
 	build_scripts/mac/install.command \
 	icons/main.ico \
     setup/install.js \
-    setup/uninstallcontrol.js
+    setup/uninstallcontrol.js \
+    build_scripts/linux/install.sh \
+    icons/main.png
 
 RESOURCES += \
 	icodroid_res.qrc

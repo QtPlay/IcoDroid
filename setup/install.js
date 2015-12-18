@@ -12,14 +12,15 @@ function Component()
             var localProgFiles = installer.environmentVariable("ProgramFiles");
             installer.setValue("TargetDir", orgFolder.replace(localProgFiles, programFiles));
             installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
+
+            installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
         }
     } else if(installer.value("os") === "mac") {
         installer.setValue("TargetDir", orgFolder + ".app");
         installer.setValue("RunProgram", "@TargetDir@/Contents/MacOS/@BinaryName@");
+    } else if(installer.value("os") === "x11") {
+        installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
     }
-
-    if (installer.value("os") !== "mac")
-        installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
 }
 
 Component.prototype.createOperations = function()
@@ -27,24 +28,21 @@ Component.prototype.createOperations = function()
     try {
         component.createOperations();
 
-        if (installer.value("os") !== "mac") {
-            var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
-            if (pageWidget !== null) {
-                if(pageWidget.shortcutCheckBox.checked) {
-                    if (installer.value("os") === "win")
-                        component.addOperation("CreateShortcut", "@RunProgram@.exe", "@DesktopDir@/@BinaryName@.lnk");
-                }
-            }
-        }
-
         if (installer.value("os") === "win") {
             component.addOperation("CreateShortcut", "@RunProgram@.exe", "@StartMenuDir@/@BinaryName@.lnk");
             component.addOperation("CreateShortcut", "@TargetDir@/Uninstall.exe", "@StartMenuDir@/Uninstall.lnk");
 
+            var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
+            if (pageWidget !== null && pageWidget.shortcutCheckBox.checked)
+                component.addOperation("CreateShortcut", "@RunProgram@.exe", "@DesktopDir@/@BinaryName@.lnk");
+
             component.addElevatedOperation("Execute", "@TargetDir@/vcredist_x64.exe", "/quiet", "/norestart");
             component.addElevatedOperation("Delete", "@TargetDir@/vcredist_x64.exe");
+        } else if (installer.value("os") === "x11") {
+            component.addOperation("CreateDesktopEntry",
+                                   "@BinaryName@.desktop",
+                                   "Version=1.0\nType=Application\nTerminal=false\nExec=@RunProgram@\nName=@BinaryName@\nIcon=@TargetDir@/main.png");
         }
-
     } catch (e) {
         print(e);
     }
