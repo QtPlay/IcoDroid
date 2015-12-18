@@ -80,7 +80,9 @@ DISTFILES += \
     setup/install.js \
     setup/uninstallcontrol.js \
     build_scripts/linux/install.sh \
-    icons/main.png
+    icons/main.png \
+    build_scripts/linux/config.xml \
+    build_scripts/linux/package.xml
 
 RESOURCES += \
 	icodroid_res.qrc
