@@ -20,4 +20,4 @@ cp $2/setup/install.js ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/setup/shortcutPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/LICENSE ./packages/com.SkycoderSoft.IcoDroid/meta/
 
-$1/bin/binarycreator -c config/config.xml -p packages IcoDroid_1.0.0_setup
+$1/bin/binarycreator -f -c config/config.xml -p packages IcoDroid_1.0.0_setup

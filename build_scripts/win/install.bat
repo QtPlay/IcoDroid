@@ -20,4 +20,4 @@ xcopy %2\setup\install.js .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\setup\shortcutPage.ui .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\LICENSE .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 
-%1\bin\binarycreator.exe -c config\config.xml -p packages IcoDroid_1.0.0_x64_setup.exe
+%1\bin\binarycreator.exe -f -c config\config.xml -p packages IcoDroid_1.0.0_x64_setup.exe
