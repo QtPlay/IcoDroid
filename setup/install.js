@@ -10,8 +10,12 @@ function Component()
             var localProgFiles = installer.environmentVariable("ProgramFiles");
             installer.setValue("TargetDir", orgFolder.replace(localProgFiles, programFiles));
         }
-    } else if(installer.value("os") === "mac")
+    } else if(installer.value("os") === "mac") {
         installer.setValue("TargetDir", orgFolder + ".app");
+        var runPath = installer.value("RunProgram");
+        var runName = runPath.substr(runPath.lastIndexOf("/") + 1);
+        installer.setValue("RunProgram", runPath + ".app/Contents/MacOs/" + runName);
+    }
 
     installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
 }
@@ -21,18 +25,21 @@ Component.prototype.createOperations = function()
     try {
         component.createOperations();
 
+        var runPath = installer.value("RunProgram");
+        var runName = runPath.substr(runPath.lastIndexOf("/") + 1);
+
         var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
         if (pageWidget !== null) {
             if(pageWidget.shortcutCheckBox.checked) {
                 if (installer.value("os") === "win")
-                    component.addOperation("CreateShortcut", "@TargetDir@/IcoDroid.exe", "@DesktopDir@/IcoDroid.lnk");
+                    component.addOperation("CreateShortcut", runPath + ".exe", "@DesktopDir@/" + runName + ".lnk");
                 else if (installer.value("os") === "mac")//TODO test
-                    component.addOperation("CreateShortcut", "@TargetDir@", "@DesktopDir@/IcoDroid.app");
+                    component.addOperation("CreateShortcut", "@TargetDir@", "@DesktopDir@/" + runName + ".app");
             }
         }
 
         if (installer.value("os") === "win") {
-            component.addOperation("CreateShortcut", "@TargetDir@/IcoDroid.exe", "@StartMenuDir@/IcoDroid.lnk");
+            component.addOperation("CreateShortcut", runPath + ".exe", "@StartMenuDir@/" + runName + ".lnk");
             component.addOperation("CreateShortcut", "@TargetDir@/Uninstall.exe", "@StartMenuDir@/Uninstall.lnk");
 
             component.addElevatedOperation("Execute", "@TargetDir@/vcredist_x64.exe", "/quiet", "/norestart");
