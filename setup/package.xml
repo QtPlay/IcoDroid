@@ -7,7 +7,7 @@
     <Licenses>
 		<License name="MIT License" file="LICENSE" />
 	</Licenses>
-	<Script>install.qs</Script>
+	<Script>install.js</Script>
 	<UserInterfaces>
 		<UserInterface>shortcutPage.ui</UserInterface>
 	</UserInterfaces>

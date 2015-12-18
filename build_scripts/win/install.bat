@@ -12,11 +12,11 @@ cd .\install
 
 :config
 xcopy %2\setup\config.xml .\config\* /y
-xcopy %2\setup\uninstallcontrol.qs .\config\* /y
+xcopy %2\setup\uninstallcontrol.js .\config\* /y
 
 :package
 xcopy %2\setup\package.xml .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
-xcopy %2\setup\install.qs .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
+xcopy %2\setup\install.js .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\setup\shortcutPage.ui .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\LICENSE .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 

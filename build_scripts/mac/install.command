@@ -12,11 +12,11 @@ cd ./install
 
 #config
 cp $2/setup/config.xml ./config/
-cp $2/setup/uninstallcontrol.qs ./config/
+cp $2/setup/uninstallcontrol.js ./config/
 
 #package
 cp $2/setup/package.xml ./packages/com.SkycoderSoft.IcoDroid/meta/
-cp $2/setup/install.qs ./packages/com.SkycoderSoft.IcoDroid/meta/
+cp $2/setup/install.js ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/setup/shortcutPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/LICENSE ./packages/com.SkycoderSoft.IcoDroid/meta/
 

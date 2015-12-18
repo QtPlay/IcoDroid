@@ -11,5 +11,5 @@
 	<MaintenanceToolName>Uninstall</MaintenanceToolName>
 	<AllowSpaceInPath>true</AllowSpaceInPath>
 	<AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
-	<ControlScript>uninstallcontrol.qs</ControlScript>
+	<ControlScript>uninstallcontrol.js</ControlScript>
 </Installer>

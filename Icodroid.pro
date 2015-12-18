@@ -74,10 +74,11 @@ DISTFILES += \
     build_scripts/win/install.bat \
 	setup/package.xml \
 	setup/config.xml \
-	setup/uninstallcontrol.qs \
 	setup/shortcutPage.ui \
-	setup/install.qs \
-    build_scripts/mac/install.command
+	build_scripts/mac/install.command \
+	icons/main.ico \
+    setup/install.js \
+    setup/uninstallcontrol.js
 
 RESOURCES += \
 	icodroid_res.qrc
