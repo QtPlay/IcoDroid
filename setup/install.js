@@ -1,5 +1,7 @@
 function Component()
 {
+    installer.setValue("BinaryName", installer.value("RunProgram"));
+
     var orgFolder = installer.value("TargetDir");
     if (installer.value("os") === "win") {
         var programFiles = installer.environmentVariable("ProgramW6432");
@@ -9,12 +11,11 @@ function Component()
         } else {
             var localProgFiles = installer.environmentVariable("ProgramFiles");
             installer.setValue("TargetDir", orgFolder.replace(localProgFiles, programFiles));
+            installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
         }
     } else if(installer.value("os") === "mac") {
         installer.setValue("TargetDir", orgFolder + ".app");
-        var runPath = installer.value("RunProgram");
-        var runName = runPath.substr(runPath.lastIndexOf("/") + 1);
-        installer.setValue("RunProgram", runPath + ".app/Contents/MacOs/" + runName);
+        installer.setValue("RunProgram", "@TargetDir@/Contents/MacOs/@BinaryName@");
     }
 
     installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
@@ -25,21 +26,18 @@ Component.prototype.createOperations = function()
     try {
         component.createOperations();
 
-        var runPath = installer.value("RunProgram");
-        var runName = runPath.substr(runPath.lastIndexOf("/") + 1);
-
         var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
         if (pageWidget !== null) {
             if(pageWidget.shortcutCheckBox.checked) {
                 if (installer.value("os") === "win")
-                    component.addOperation("CreateShortcut", runPath + ".exe", "@DesktopDir@/" + runName + ".lnk");
+                    component.addOperation("CreateShortcut", "@RunProgram@.exe", "@DesktopDir@/@BinaryName@.lnk");
                 else if (installer.value("os") === "mac")//TODO test
-                    component.addOperation("CreateShortcut", "@TargetDir@", "@DesktopDir@/" + runName + ".app");
+                    component.addOperation("CreateShortcut", "@TargetDir@", "@DesktopDir@/@BinaryName@.app");
             }
         }
 
         if (installer.value("os") === "win") {
-            component.addOperation("CreateShortcut", runPath + ".exe", "@StartMenuDir@/" + runName + ".lnk");
+            component.addOperation("CreateShortcut", "@RunProgram@.exe", "@StartMenuDir@/@BinaryName@.lnk");
             component.addOperation("CreateShortcut", "@TargetDir@/Uninstall.exe", "@StartMenuDir@/Uninstall.lnk");
 
             component.addElevatedOperation("Execute", "@TargetDir@/vcredist_x64.exe", "/quiet", "/norestart");

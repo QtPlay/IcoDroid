@@ -7,7 +7,7 @@
 	<ProductUrl>https://github.com/Skycoder42/IcoDroid/releases</ProductUrl>
 	<StartMenuDir>IcoDroid</StartMenuDir>
 	<TargetDir>@ApplicationsDir@/IcoDroid</TargetDir>
-	<RunProgram>@TargetDir@/IcoDroid</RunProgram>
+	<RunProgram>IcoDroid</RunProgram>
 	<MaintenanceToolName>Uninstall</MaintenanceToolName>
 	<AllowSpaceInPath>true</AllowSpaceInPath>
 	<AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
