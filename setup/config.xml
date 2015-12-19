@@ -8,8 +8,12 @@
 	<StartMenuDir>IcoDroid</StartMenuDir>
 	<TargetDir>@ApplicationsDir@/IcoDroid</TargetDir>
 	<RunProgram>IcoDroid</RunProgram>
-	<MaintenanceToolName>Uninstall</MaintenanceToolName>
 	<AllowSpaceInPath>true</AllowSpaceInPath>
 	<AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
-	<ControlScript>uninstallcontrol.js</ControlScript>
+	<RemoteRepositories>
+		<Repository>
+			<Url>http://skynet.is-an-engineer.com/repositories/IcoDroid/win_x64</Url>
+			<Enabled>1</Enabled>
+		</Repository>
+	</RemoteRepositories>
 </Installer>

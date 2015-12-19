@@ -12,7 +12,6 @@ cd .\install
 
 :config
 xcopy %2\setup\config.xml .\config\* /y
-xcopy %2\setup\uninstallcontrol.js .\config\* /y
 
 :package
 xcopy %2\setup\package.xml .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
@@ -20,4 +19,6 @@ xcopy %2\setup\install.js .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\setup\shortcutPage.ui .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\LICENSE .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 
-%1\bin\binarycreator.exe -f -c config\config.xml -p packages IcoDroid_1.0.0_x64_setup.exe
+mkdir IcoDroid
+%1\bin\repogen.exe -p ./packages ./IcoDroid/win_x64
+%1\bin\binarycreator.exe -n -c ./config/config.xml -p ./packages IcoDroid_1.0.0_x64_setup.exe

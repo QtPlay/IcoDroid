@@ -12,6 +12,5 @@
 		<UserInterface>shortcutPage.ui</UserInterface>
 	</UserInterfaces>
 	<ForcedInstallation>true</ForcedInstallation>
-	<RequiresAdminRights>true</RequiresAdminRights>
 	<Default>true</Default>
 </Package>
