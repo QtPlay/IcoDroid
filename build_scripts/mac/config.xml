@@ -7,9 +7,14 @@
 	<ProductUrl>https://github.com/Skycoder42/IcoDroid/releases</ProductUrl>
 	<StartMenuDir>IcoDroid</StartMenuDir>
 	<TargetDir>@ApplicationsDir@/IcoDroid</TargetDir>
-	<RunProgram>@TargetDir@/IcoDroid</RunProgram>
-	<MaintenanceToolName>Uninstall</MaintenanceToolName>
+	<RunProgram>IcoDroid</RunProgram>
 	<AllowSpaceInPath>true</AllowSpaceInPath>
 	<AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
-	<ControlScript>uninstallcontrol.qs</ControlScript>
+	<RemoteRepositories>
+		<Repository>
+			<Url>http://skynet.is-an-engineer.com/repositories/IcoDroid/mac</Url>
+			<Enabled>1</Enabled>
+			<DisplayName>IcoDroid Mac Repository</DisplayName>
+		</Repository>
+	</RemoteRepositories>
 </Installer>

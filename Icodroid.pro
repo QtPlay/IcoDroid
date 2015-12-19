@@ -81,7 +81,8 @@ DISTFILES += \
     icons/main.png \
     build_scripts/linux/config.xml \
     build_scripts/linux/package.xml \
-    build_scripts/win/config.xml
+    build_scripts/win/config.xml \
+    build_scripts/mac/config.xml
 
 RESOURCES += \
 	icodroid_res.qrc
