@@ -15,7 +15,7 @@
 		<Repository>
 			<Url>http://skynet.is-an-engineer.com/repositories/IcoDroid/linux_x64</Url>
 			<Enabled>1</Enabled>
-			<DisplayName>IcoDroid Mac Repository</DisplayName>
+			<DisplayName>IcoDroid Linux x64 Repository</DisplayName>
 		</Repository>
 	</RemoteRepositories>
 </Installer>
