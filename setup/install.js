@@ -13,7 +13,8 @@ function Component()
             installer.setValue("TargetDir", orgFolder.replace(localProgFiles, programFiles));
             installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
 
-            installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
+            if(installer.isInstaller())
+                installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
         }
     } else if(installer.value("os") === "mac") {
         installer.setValue("TargetDir", orgFolder + ".app");
@@ -32,9 +33,11 @@ Component.prototype.createOperations = function()
             component.addOperation("CreateShortcut", "@RunProgram@.exe", "@StartMenuDir@/@BinaryName@.lnk");
             component.addOperation("CreateShortcut", "@TargetDir@/Uninstall.exe", "@StartMenuDir@/Uninstall.lnk");
 
-            var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
-            if (pageWidget !== null && pageWidget.shortcutCheckBox.checked)
-                component.addOperation("CreateShortcut", "@RunProgram@.exe", "@DesktopDir@/@BinaryName@.lnk");
+            if(installer.isInstaller()) {
+                var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
+                if (pageWidget !== null && pageWidget.shortcutCheckBox.checked)
+                    component.addOperation("CreateShortcut", "@RunProgram@.exe", "@DesktopDir@/@BinaryName@.lnk");
+            }
 
             component.addElevatedOperation("Execute", "@TargetDir@/vcredist_x64.exe", "/quiet", "/norestart");
             component.addElevatedOperation("Delete", "@TargetDir@/vcredist_x64.exe");
