@@ -73,7 +73,6 @@ DISTFILES += \
     build_scripts/linux/qt.conf \
     build_scripts/win/install.bat \
 	setup/package.xml \
-	setup/config.xml \
 	setup/shortcutPage.ui \
 	build_scripts/mac/install.command \
 	icons/main.ico \
@@ -81,7 +80,8 @@ DISTFILES += \
     build_scripts/linux/install.sh \
     icons/main.png \
     build_scripts/linux/config.xml \
-    build_scripts/linux/package.xml
+    build_scripts/linux/package.xml \
+    build_scripts/win/config.xml
 
 RESOURCES += \
 	icodroid_res.qrc

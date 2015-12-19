@@ -11,7 +11,7 @@ move /y .\deploy .\install\packages\com.SkycoderSoft.IcoDroid\data
 cd .\install
 
 :config
-xcopy %2\setup\config.xml .\config\* /y
+xcopy %2\build_scripts\win\config.xml .\config\* /y
 
 :package
 xcopy %2\setup\package.xml .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
