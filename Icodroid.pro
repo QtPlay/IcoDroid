@@ -83,7 +83,8 @@ DISTFILES += \
     build_scripts/linux/package.xml \
     build_scripts/win/config.xml \
     build_scripts/mac/config.xml \
-    setup/autoNextControl.js
+    setup/autoNextControl.js \
+    build_scripts/win/regSetUninst.bat
 
 RESOURCES += \
 	icodroid_res.qrc

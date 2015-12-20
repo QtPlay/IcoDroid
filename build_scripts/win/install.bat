@@ -19,6 +19,7 @@ xcopy %2\setup\package.xml .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\setup\install.js .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\setup\shortcutPage.ui .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\LICENSE .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
+xcopy %2\build_scripts\win\regSetUninst.bat .\packages\com.SkycoderSoft.IcoDroid\data\* /y
 
 mkdir IcoDroid
 %1\bin\repogen.exe -p ./packages ./IcoDroid/win_x64
