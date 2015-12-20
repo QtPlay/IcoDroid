@@ -18,4 +18,5 @@
 			<DisplayName>IcoDroid Linux x64 Repository</DisplayName>
 		</Repository>
 	</RemoteRepositories>
+	<ControlScript>autoNextControl.js</ControlScript>
 </Installer>

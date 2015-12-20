@@ -17,4 +17,5 @@
 			<DisplayName>IcoDroid Mac Repository</DisplayName>
 		</Repository>
 	</RemoteRepositories>
+	<ControlScript>autoNextControl.js</ControlScript>
 </Installer>
