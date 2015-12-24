@@ -17,7 +17,6 @@ function Component()
                 installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
         }
     } else if(installer.value("os") === "mac") {
-        installer.setValue("TargetDir", orgFolder + ".app");
         installer.setValue("RunProgram", "@TargetDir@/Contents/MacOS/@BinaryName@");
     } else if(installer.value("os") === "x11") {
         installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
