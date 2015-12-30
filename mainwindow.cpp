@@ -83,7 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	//init functions
 	this->on_iconTypeComboBox_activated(this->ui->iconTypeComboBox->currentText());
-	this->updateController->scheduleUpdate(1);
+	this->updateController->start();
 }
 
 MainWindow::~MainWindow()
