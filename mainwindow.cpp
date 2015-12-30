@@ -83,7 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	//init functions
 	this->on_iconTypeComboBox_activated(this->ui->iconTypeComboBox->currentText());
-	this->updateController->start();
+	this->updateController->scheduleUpdate(QDateTime::currentDateTime().addSecs(10));
 }
 
 MainWindow::~MainWindow()
