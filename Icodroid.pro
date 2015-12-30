@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui widgets
 CONFIG += C++11
 
 #Download newest version from: https://github.com/Skycoder42/QPathEdit
@@ -12,7 +12,10 @@ win32: include(C:/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 else:mac: include(/Library/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 else:unix:include(/lib/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+#Download newest version from: https://github.com/Skycoder42/QtAutoUpdater
+win32: include(C:/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
+else:mac: include(/Library/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
+else:unix:include(/lib/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
 
 TARGET = IcoDroid
 VERSION = 1.0.0
