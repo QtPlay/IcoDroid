@@ -18,7 +18,7 @@ else:mac: include(/Library/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
 else:unix:include(/lib/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
 
 TARGET = IcoDroid
-VERSION = 1.0.0
+VERSION = 1.1.0
 TEMPLATE = app
 
 DEFINES += "TARGET=\\\"$$TARGET\\\""
@@ -83,7 +83,6 @@ DISTFILES += \
     build_scripts/linux/install.sh \
     icons/main.png \
     build_scripts/linux/config.xml \
-    build_scripts/linux/package.xml \
     build_scripts/win/config.xml \
     build_scripts/mac/config.xml \
     setup/autoNextControl.js \

@@ -90,12 +90,17 @@
         <translation>Über IcoDroid</translation>
     </message>
     <message>
-        <location line="+124"/>
+        <location line="+99"/>
+        <source>Check for Updates</source>
+        <translation>Nach Updates suchen</translation>
+    </message>
+    <message>
+        <location line="+39"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location line="-408"/>
+        <location line="-422"/>
         <source>Android Configuration</source>
         <translation>Android Konfiguration</translation>
     </message>
@@ -130,8 +135,8 @@
         <translation>&amp;Profil:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="+68"/>
-        <location line="+158"/>
+        <location filename="../mainwindow.cpp" line="+72"/>
+        <location line="+159"/>
         <source>Launcher Icon</source>
         <translation></translation>
     </message>
@@ -266,12 +271,7 @@
         <translation>Updates:</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Skycoder42/IcoDroid/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/Skycoder42/IcoDroid/releases&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location line="+15"/>
+        <location line="+9"/>
         <source>Written with the Qt-Framwork.</source>
         <translation>Geschrieben mit dem Qt-Framework.</translation>
     </message>
@@ -281,7 +281,7 @@
         <translation>Über Qt</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+60"/>
         <source>Add File</source>
         <translation>Datei hinzufügen</translation>
     </message>
