@@ -17,7 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow),
 	settings(new QSettings(this)),
 	mainModel(new PixmapModel(this)),
-	previewDock(new IconViewDockWidget(this))
+	previewDock(new IconViewDockWidget(this)),
+	updateController(new QtAutoUpdater::UpdateController(this))
 {
 	this->initSettings();
 
@@ -29,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->ui->versionLabel->setText(QCoreApplication::applicationVersion());
 	this->ui->tabWidget->setCurrentIndex(0);
 	this->ui->loadViewListView->setModel(this->mainModel);
+	this->ui->updatesLayout->replaceWidget(this->ui->checkUpdatesPlaceholder,
+										   this->updateController->createUpdatePanel(this));
+	this->ui->checkUpdatesPlaceholder->deleteLater();
 
 	//setup actions
 	this->ui->loadViewListView->addActions({
@@ -79,6 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	//init functions
 	this->on_iconTypeComboBox_activated(this->ui->iconTypeComboBox->currentText());
+	this->updateController->scheduleUpdate(QDateTime::currentDateTime().addSecs(10));
 }
 
 MainWindow::~MainWindow()

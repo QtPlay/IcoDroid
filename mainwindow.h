@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSettings>
 #include <QListWidgetItem>
+#include <QtAutoUpdater>
 #include "iconviewdockwidget.h"
 #include "pixmapmodel.h"
 
@@ -41,6 +42,8 @@ private:
 	QSettings *settings;
 	PixmapModel *mainModel;
 	IconViewDockWidget *previewDock;
+
+	QtAutoUpdater::UpdateController *updateController;
 };
 
 #endif // MAINWINDOW_H

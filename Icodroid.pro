@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui widgets
 CONFIG += C++11
 
 #Download newest version from: https://github.com/Skycoder42/QPathEdit
@@ -12,10 +12,13 @@ win32: include(C:/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 else:mac: include(/Library/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 else:unix:include(/lib/C++Libraries/Qt/QPathEdit/qpathedit.pri)
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+#Download newest version from: https://github.com/Skycoder42/QtAutoUpdater
+win32: include(C:/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
+else:mac: include(/Library/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
+else:unix:include(/lib/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
 
 TARGET = IcoDroid
-VERSION = 1.0.0
+VERSION = 1.1.0
 TEMPLATE = app
 
 DEFINES += "TARGET=\\\"$$TARGET\\\""
@@ -53,7 +56,7 @@ HEADERS  += mainwindow.h \
     pixmapmodel.h
 
 FORMS    += mainwindow.ui \
-    iconviewdockwidget.ui
+	iconviewdockwidget.ui
 
 DISTFILES += \
     .gitignore \
@@ -66,20 +69,24 @@ DISTFILES += \
     icons/main.icns \
     build_scripts/mac/deploy.command \
     build_scripts/mac/translate.command \
-    build_scripts/mac/dmgInfo.json \
-    build_scripts/mac/createDmg.txt \
-    build_scripts/mac/background.png \
-    build_scripts/win/IcoDroid_Setup_x64/Product.wxs \
-    build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.sln \
-    build_scripts/win/IcoDroid_Setup_x64/IcoDroid_Setup_x64.wixproj \
     build_scripts/linux/translate.sh \
     build_scripts/linux/deploy.sh \
     build_scripts/mac/qt.conf \
     build_scripts/win/qt.conf \
     build_scripts/linux/qt.conf \
-    build_scripts/linux/control \
-    build_scripts/linux/pack.sh \
-    build_scripts/win/LICENSE.rtf
+    build_scripts/win/install.bat \
+	setup/package.xml \
+	setup/shortcutPage.ui \
+	build_scripts/mac/install.command \
+	icons/main.ico \
+    setup/install.js \
+    build_scripts/linux/install.sh \
+    icons/main.png \
+    build_scripts/linux/config.xml \
+    build_scripts/win/config.xml \
+    build_scripts/mac/config.xml \
+    setup/autoNextControl.js \
+    build_scripts/win/regSetUninst.bat
 
 RESOURCES += \
 	icodroid_res.qrc
