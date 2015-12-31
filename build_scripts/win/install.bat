@@ -23,4 +23,4 @@ xcopy %2\build_scripts\win\regSetUninst.bat .\packages\com.SkycoderSoft.IcoDroid
 
 mkdir IcoDroid
 %1\bin\repogen.exe -p ./packages ./IcoDroid/win_x64
-%1\bin\binarycreator.exe -n -c ./config/config.xml -p ./packages IcoDroid_1.0.0_x64_setup.exe
+%1\bin\binarycreator.exe -n -c ./config/config.xml -p ./packages IcoDroid_1.1.0_x64_setup.exe
