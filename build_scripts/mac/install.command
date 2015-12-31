@@ -12,6 +12,7 @@ cd ./install
 
 #config
 cp $2/build_scripts/mac/config.xml ./config/
+cp $2/setup/autoNextControl.js ./config/
 
 #package
 cp $2/setup/package.xml ./packages/com.SkycoderSoft.IcoDroid/meta/
@@ -21,5 +22,5 @@ cp $2/LICENSE ./packages/com.SkycoderSoft.IcoDroid/meta/
 
 mkdir IcoDroid
 $1/bin/repogen -p ./packages ./IcoDroid/mac
-$1/bin/binarycreator -n -c ./config/config.xml -p ./packages IcoDroid_1.0.0_setup
-zip -r -9 IcoDroid_1.0.0_setup.app.zip IcoDroid_1.0.0_setup.app
+$1/bin/binarycreator -n -c ./config/config.xml -p ./packages IcoDroid_1.1.0_setup
+zip -r -9 IcoDroid_1.0.0_setup.app.zip IcoDroid_1.1.0_setup.app
