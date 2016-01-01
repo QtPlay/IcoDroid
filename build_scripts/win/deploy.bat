@@ -2,6 +2,7 @@
 :%1: %{Qt:QT_INSTALL_BINS}
 :%2: %{CurrentBuild:Type}
 :%3: %{sourceDir}
+:%4: QtAutoUpdater translations path
 :workingdir: %{buildDir}
 @echo off
 rmdir .\deploy /s /q
@@ -15,6 +16,7 @@ ren *_de.qm *_de.mqtmp
 ren *_en.qm *_en.mqtmp
 del *.qm
 ren *.mqtmp *.qm
+xcopy %4\translations\*.qm .\* /y
 cd ..
 
 xcopy %3\build_scripts\win\qt.conf .\* /y

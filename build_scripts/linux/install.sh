@@ -2,6 +2,7 @@
 # Add this as a deployment step with the arguments:
 #$1: "Qt Installer Framework install path"
 #$2: %{sourceDir}
+#$3: 0 if create new, 1 if update
 #workingdir: %{buildDir}
 
 rm -r ./install
@@ -22,5 +23,9 @@ cp $2/LICENSE ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/icons/main.png ./packages/com.SkycoderSoft.IcoDroid/data/
 
 mkdir IcoDroid
-$1/bin/repogen -p ./packages ./IcoDroid/linux_x64
-$1/bin/binarycreator -n -c ./config/config.xml -p ./packages IcoDroid_1.1.0_setup.run
+if [ "$3" -eq "0" ]; then
+	$1/bin/repogen -p ./packages ./IcoDroid/linux_x64
+else
+	$1/bin/repogen --update-new-components -p ./packages ./IcoDroid/linux_x64
+fi
+$1/bin/binarycreator -n -c ./config/config.xml -p ./packages IcoDroid_1.1.1_setup.run

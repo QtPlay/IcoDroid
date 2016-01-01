@@ -21,6 +21,10 @@ cp $2/setup/shortcutPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/LICENSE ./packages/com.SkycoderSoft.IcoDroid/meta/
 
 mkdir IcoDroid
-$1/bin/repogen -p ./packages ./IcoDroid/mac
-$1/bin/binarycreator -n -c ./config/config.xml -p ./packages IcoDroid_1.1.0_setup
-zip -r -9 IcoDroid_1.0.0_setup.app.zip IcoDroid_1.1.0_setup.app
+if [ "$3" -eq "0" ]; then
+	$1/bin/repogen -p ./packages ./IcoDroid/mac
+else
+	$1/bin/repogen --update-new-components -p ./packages ./IcoDroid/mac
+fi
+$1/bin/binarycreator -n -c ./config/config.xml -p ./packages IcoDroid_1.1.1_setup
+zip -r -9 IcoDroid_1.1.1_setup.app.zip IcoDroid_1.1.1_setup.app

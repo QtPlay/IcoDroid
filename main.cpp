@@ -1,11 +1,14 @@
-#include <QTranslator>
 #include "mainwindow.h"
 #include <QApplication>
+#include <QDirIterator>
+#include <QRegularExpression>
+#include <QTranslator>
 #include <QLibraryInfo>
 #include <QLocale>
 #include <QCommandLineParser>
 #include <QMessageBox>
 
+static void loadTranslations(const QLocale &locale = QLocale());
 static bool execParser(QCommandLineParser &parser);
 
 int main(int argc, char *argv[])
@@ -18,14 +21,7 @@ int main(int argc, char *argv[])
 	QApplication::setApplicationDisplayName(DISPLAY_NAME);
 	QApplication::setWindowIcon(QIcon(QStringLiteral(":/icons/main.ico")));
 
-	QTranslator *translator = new QTranslator(qApp);
-	if(translator->load(QLocale(),
-						QStringLiteral("Icodroid"),
-						QStringLiteral("_"),
-						QLibraryInfo::location(QLibraryInfo::TranslationsPath),
-						QStringLiteral(".qm"))) {
-		QCoreApplication::installTranslator(translator);
-	}
+	loadTranslations();
 
 	QCommandLineParser parser;
 	if(!execParser(parser))
@@ -40,6 +36,33 @@ int main(int argc, char *argv[])
 	w.show();
 
 	return a.exec();
+}
+
+static void loadTranslations(const QLocale &locale)
+{
+	QDir transDir(QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+	QDirIterator transDirIt(transDir);
+	QRegularExpression regex(QStringLiteral("^(.*)_.*\\.qm$"));
+
+	QStringList translationNames;
+	while(transDirIt.hasNext()) {
+		transDirIt.next();
+		QRegularExpressionMatch match = regex.match(transDirIt.fileName());
+		if(match.hasMatch())
+			translationNames.append(match.captured(1));
+	}
+	translationNames.removeDuplicates();
+
+	foreach(QString name, translationNames) {
+		QTranslator *translator = new QTranslator(qApp);
+		if(translator->load(locale,
+							name,
+							QStringLiteral("_"),
+							transDir.absolutePath())) {
+			QCoreApplication::installTranslator(translator);
+		} else
+			delete translator;
+	}
 }
 
 static bool execParser(QCommandLineParser &parser)
@@ -67,3 +90,4 @@ static bool execParser(QCommandLineParser &parser)
 		return true;
 	}
 }
+

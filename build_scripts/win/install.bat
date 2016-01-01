@@ -1,6 +1,7 @@
 : Add this as a deployment step with the arguments:
 :%1: "Qt Installer Framework install path"
 :%2: %{sourceDir}
+:%3: 0 if create new, 1 if update
 :workingdir: %{buildDir}
 @echo off
 
@@ -22,5 +23,9 @@ xcopy %2\LICENSE .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\build_scripts\win\regSetUninst.bat .\packages\com.SkycoderSoft.IcoDroid\data\* /y
 
 mkdir IcoDroid
-%1\bin\repogen.exe -p ./packages ./IcoDroid/win_x64
-%1\bin\binarycreator.exe -n -c ./config/config.xml -p ./packages IcoDroid_1.1.0_x64_setup.exe
+IF "%3" == "0" (
+	%1\bin\repogen.exe -p ./packages ./IcoDroid/win_x64
+) ELSE (
+	%1\bin\repogen.exe --update-new-components -p ./packages ./IcoDroid/win_x64
+)
+%1\bin\binarycreator.exe -n -c ./config/config.xml -p ./packages IcoDroid_1.1.1_x64_setup.exe

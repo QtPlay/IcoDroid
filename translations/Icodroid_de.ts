@@ -4,7 +4,7 @@
 <context>
     <name>GLOBAL</name>
     <message>
-        <location filename="../main.cpp" line="+47"/>
+        <location filename="../main.cpp" line="+70"/>
         <source>A tool to create Android icons from single files like .ico, .png, …</source>
         <translation>Ein Werkzeug um Android-Icons aus einzelnen Dateien zu erzeugen, z.B. .ico, .png, …</translation>
     </message>

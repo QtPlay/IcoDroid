@@ -18,7 +18,7 @@ else:mac: include(/Library/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
 else:unix:include(/lib/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
 
 TARGET = IcoDroid
-VERSION = 1.1.0
+VERSION = 1.1.1
 TEMPLATE = app
 
 DEFINES += "TARGET=\\\"$$TARGET\\\""

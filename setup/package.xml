@@ -2,8 +2,8 @@
 <Package>
 	<DisplayName>IcoDroid</DisplayName>
 	<Description>Installs IcoDroid on your computer.</Description>
-	<Version>1.1.0</Version>
-	<ReleaseDate>2015-12-31</ReleaseDate>
+	<Version>1.1.1</Version>
+	<ReleaseDate>2016-01-01</ReleaseDate>
     <Licenses>
 		<License name="MIT License" file="LICENSE" />
 	</Licenses>

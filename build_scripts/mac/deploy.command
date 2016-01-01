@@ -3,6 +3,7 @@
 #$1: %{Qt:QT_INSTALL_DATA}
 #$2: %{CurrentBuild:Type}
 #$3: %{sourceDir}
+#$4: QtAutoUpdater translations path
 #workingdir: %{buildDir}
 rm -r ./deploy
 
@@ -17,6 +18,7 @@ cp $1/translations/qt_de.qm ./IcoDroid.app/Contents/translations/
 cp $1/translations/qt_en.qm ./IcoDroid.app/Contents/translations/
 cp $1/translations/qtbase_de.qm ./IcoDroid.app/Contents/translations/
 cp $1/translations/qtbase_en.qm ./IcoDroid.app/Contents/translations/
+cp $4/translations/*.qm ./IcoDroid.app/Contents/translations/
 
 mkdir -p ./IcoDroid.app/Contents/Resources
 cp $3/build_scripts/mac/qt.conf ./IcoDroid.app/Contents/Resources/qt.conf
