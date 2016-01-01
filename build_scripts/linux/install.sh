@@ -5,7 +5,13 @@
 #$3: 0 if create new, 1 if update
 #workingdir: %{buildDir}
 
-rm -r ./install
+if [ "$3" -eq "0" ]; then
+	rm -r ./install
+else
+	rm -r ./install/config
+	rm -r ./install/packages
+fi
+
 mkdir -p install/config
 mkdir -p install/packages/com.SkycoderSoft.IcoDroid/meta
 mv -f ./deploy install/packages/com.SkycoderSoft.IcoDroid/data

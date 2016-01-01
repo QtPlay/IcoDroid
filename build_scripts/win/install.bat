@@ -5,7 +5,13 @@
 :workingdir: %{buildDir}
 @echo off
 
-rmdir .\install /s /q
+IF "%3" == "0" (
+	rmdir .\install /s /q
+) ELSE (
+	rmdir .\install\config /s /q
+	rmdir .\install\packages /s /q
+)
+
 mkdir .\install\config
 mkdir .\install\packages\com.SkycoderSoft.IcoDroid\meta
 move /y .\deploy .\install\packages\com.SkycoderSoft.IcoDroid\data

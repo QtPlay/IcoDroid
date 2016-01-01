@@ -2,9 +2,16 @@
 # Add this as a deployment step with the arguments:
 #$1: "Qt Installer Framework install path"
 #$2: %{sourceDir}
+#$3: 0 if create new, 1 if update
 #workingdir: %{buildDir}
 
-rm -r ./install
+if [ "$3" -eq "0" ]; then
+	rm -r ./install
+else
+	rm -r ./install/config
+	rm -r ./install/packages
+fi
+
 mkdir -p install/config
 mkdir -p install/packages/com.SkycoderSoft.IcoDroid/meta
 mv -f ./deploy/IcoDroid.app install/packages/com.SkycoderSoft.IcoDroid/data
