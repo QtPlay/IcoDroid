@@ -42,7 +42,7 @@ win32 {
 	DEFINES += "COMPANY=\"\\\"Skycoder Soft\\\"\""
 	DEFINES += "DISPLAY_NAME=\"\\\"IcoDroid\\\"\""
 
-	QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/../lib\''
+	QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
 }
 
 
