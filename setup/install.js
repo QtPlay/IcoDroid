@@ -11,20 +11,25 @@ function Component()
         } else {
             var localProgFiles = installer.environmentVariable("ProgramFiles");
             installer.setValue("TargetDir", orgFolder.replace(localProgFiles, programFiles));
-            installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
-
             if(installer.isInstaller())
-                installer.addWizardPage(component, "shortcutPage", QInstaller.ReadyForInstallation);
+                installer.addWizardPage(component, "ShortcutPage", QInstaller.ReadyForInstallation);
         }
+    }
+
+    if(installer.isInstaller())
+        installer.addWizardPage(component, "UserPage", QInstaller.TargetDirectory);
+}
+
+Component.prototype.createOperations = function()
+{
+    if (installer.value("os") === "win") {
+        installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
     } else if(installer.value("os") === "mac") {
         installer.setValue("RunProgram", "@TargetDir@/Contents/MacOS/@BinaryName@");
     } else if(installer.value("os") === "x11") {
         installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
     }
-}
 
-Component.prototype.createOperations = function()
-{
     try {
         component.createOperations();
 
@@ -40,7 +45,7 @@ Component.prototype.createOperations = function()
             }
 
             if(installer.isInstaller()) {
-                var pageWidget = gui.pageWidgetByObjectName("DynamicshortcutPage");
+                var pageWidget = gui.pageWidgetByObjectName("DynamicShortcutPage");
                 if (pageWidget !== null && pageWidget.shortcutCheckBox.checked)
                     component.addOperation("CreateShortcut", "@RunProgram@.exe", "@DesktopDir@/@BinaryName@.lnk");
             }

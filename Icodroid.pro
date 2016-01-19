@@ -18,7 +18,7 @@ else:mac: include(/Library/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
 else:unix:include(/lib/C++Libraries/Qt/QtAutoUpdater/qtautoupdater.pri)
 
 TARGET = IcoDroid
-VERSION = 1.1.1
+VERSION = 1.2.0
 TEMPLATE = app
 
 DEFINES += "TARGET=\\\"$$TARGET\\\""
@@ -76,7 +76,7 @@ DISTFILES += \
     build_scripts/linux/qt.conf \
     build_scripts/win/install.bat \
 	setup/package.xml \
-	setup/shortcutPage.ui \
+	setup/ShortcutPage.ui \
 	build_scripts/mac/install.command \
 	icons/main.ico \
     setup/install.js \
@@ -86,7 +86,8 @@ DISTFILES += \
     build_scripts/win/config.xml \
     build_scripts/mac/config.xml \
     setup/autoNextControl.js \
-    build_scripts/win/regSetUninst.bat
+	build_scripts/win/regSetUninst.bat \
+	setup/UserPage.ui
 
 RESOURCES += \
 	icodroid_res.qrc
