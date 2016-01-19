@@ -60,7 +60,6 @@ FORMS    += mainwindow.ui \
 
 DISTFILES += \
     .gitignore \
-    LICENSE \
     README.md \
 	icons/Fatcow-Farm-Fresh-Android.ico \
 	icons/Visualpharm-Must-Have-Picture.ico \
@@ -87,7 +86,10 @@ DISTFILES += \
     build_scripts/mac/config.xml \
     setup/autoNextControl.js \
 	build_scripts/win/regSetUninst.bat \
-	setup/UserPage.ui
+	setup/UserPage.ui \
+    setup/de.ts \
+    setup/LICENSE_de.txt \
+    LICENSE.txt
 
 RESOURCES += \
 	icodroid_res.qrc

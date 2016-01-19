@@ -26,7 +26,9 @@ xcopy %2\setup\package.xml .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\setup\install.js .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\setup\shortcutPage.ui .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\setup\userPage.ui .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
-xcopy %2\LICENSE .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
+xcopy %2\setup\*.qm .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
+xcopy %2\setup\LICENSE*.txt .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
+xcopy %2\LICENSE.txt .\packages\com.SkycoderSoft.IcoDroid\meta\* /y
 xcopy %2\build_scripts\win\regSetUninst.bat .\packages\com.SkycoderSoft.IcoDroid\data\* /y
 
 :DEBUG - CREATE OFFLINE INSTALLER

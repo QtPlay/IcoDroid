@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Create Desktop Shortcut</string>
+   <string>Installation Scope</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
    <property name="spacing">
@@ -36,7 +36,7 @@
    <item>
     <widget class="QLabel" name="allUsersLabel">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The application will be installed for all users on this machine. You require elevated privileges for this installation. If you did not start the installer with elevated rights, this option will not be available. Please restart the installer with elevated rights (Admin on windows, root an linux/mac) to install for all users.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>The application will be installed for all users on this machine. You require elevated privileges for this installation. If you did not start the installer with elevated rights, this option will not be available. Please restart the installer with elevated rights (Admin on windows, root an linux/mac) to install for all users.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

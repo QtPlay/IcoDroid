@@ -2,16 +2,20 @@
 <Package>
 	<DisplayName>IcoDroid</DisplayName>
 	<Description>Installs IcoDroid on your computer.</Description>
+	<Description xml:lang="de_de">Installiert IcoDroid auf Ihrem Computer.</Description>
 	<Version>1.2.0</Version>
 	<ReleaseDate>2016-01-19</ReleaseDate>
     <Licenses>
-		<License name="MIT License" file="LICENSE" />
+		<License name="MIT License" file="LICENSE.txt" />
 	</Licenses>
 	<Script>install.js</Script>
 	<UserInterfaces>
 		<UserInterface>ShortcutPage.ui</UserInterface>
 		<UserInterface>UserPage.ui</UserInterface>
 	</UserInterfaces>
+	<Translations>
+		<Translation>de.qm</Translation>
+	</Translations>
 	<ForcedInstallation>true</ForcedInstallation>
 	<Default>true</Default>
 </Package>

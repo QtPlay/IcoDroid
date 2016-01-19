@@ -6,7 +6,7 @@ function Component()
     if (installer.value("os") === "win") {
         var programFiles = installer.environmentVariable("ProgramW6432");
         if(programFiles.length === 0) {
-            QMessageBox.critical("os.not64", "Error", "This Program is an 64bit Program. You can't install it on a 32bit machine");
+            QMessageBox.critical("os.not64", qsTr("Error"), qsTr("This Program is an 64bit Program. You can't install it on a 32bit machine"));
             gui.rejectWithoutPrompt();
         } else {
             var localProgFiles = installer.environmentVariable("ProgramFiles");
