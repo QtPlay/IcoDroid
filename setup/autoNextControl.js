@@ -1,22 +1,25 @@
 function Controller()
 {
+    installer.setValue("UserTargetDir", installer.value("TargetDir"));
 
+    var isAdmin = false;
+    if (installer.value("os") === "win") {
+        var testAdmin = installer.execute("cmd", ["/c", "net", "session"]);
+        if(testAdmin.length > 1 && testAdmin[1] == 0)
+            isAdmin = true;
+    } else {
+        var testAdmin = installer.execute("id", ["-u"]);//TODO test
+        if(testAdmin.length > 1 && testAdmin[1] == 0)
+            isAdmin = true;
+    }
+
+    installer.setValue("isAdmin", isAdmin ? "true" : "false");
+    installer.setValue("AllUsers", isAdmin ? "true" : "false");
 }
 
 Controller.prototype.IntroductionPageCallback = function()
 {
-
-    if(installer.isInstaller()) {
-        if (installer.value("os") === "win") {
-            var testAdmin = installer.execute("cmd", ["/c", "net", "session"]);
-            if(testAdmin.length > 1 && testAdmin[1] == 0)
-                installer.setValue("AllUsers", "true");
-        } else {
-            var testAdmin = installer.execute("id", ["-u"]);//TODO test
-            if(testAdmin.length > 1 && testAdmin[1] == 0)
-                installer.setValue("AllUsers", "true");
-        }
-    } else {
+    if(!installer.isInstaller()) {
         var widget = gui.currentPageWidget();
         if (widget !== null) {
 
@@ -57,16 +60,18 @@ Controller.prototype.IntroductionPageCallback = function()
 Controller.prototype.DynamicUserPageCallback = function()
 {
     var page = gui.pageWidgetByObjectName("DynamicUserPage");
-    if (page !== null && installer.value("AllUsers") === "true") {
-        page.allUsersButton.checked = true;
-        page.meOnlyButton.checked = false;
-        page.allUsersButton.enabled = true;
-        page.allUsersLabel.enabled = true;
-    } else {
-        page.meOnlyButton.checked = true;
-        page.allUsersButton.checked = false;
-        page.allUsersButton.enabled = false;
-        page.allUsersLabel.enabled = false;
+    if(page !== null) {
+        if (installer.value("isAdmin") === "true") {
+            page.allUsersButton.checked = installer.value("AllUsers") === "true";
+            page.meOnlyButton.checked = installer.value("AllUsers") !== "true";
+            page.allUsersButton.enabled = true;
+            page.allUsersLabel.enabled = true;
+        } else {
+            page.meOnlyButton.checked = true;
+            page.allUsersButton.checked = false;
+            page.allUsersButton.enabled = false;
+            page.allUsersLabel.enabled = false;
+        }
     }
 }
 
@@ -75,11 +80,21 @@ Controller.prototype.TargetDirectoryPageCallback = function()
     var page = gui.pageWidgetByObjectName("DynamicUserPage");
     if (page !== null && page.allUsersButton.checked) {
         installer.setValue("AllUsers", "true");
-        installer.gainAdminRights();
+        installer.setValue("TargetDir", installer.value("AdminTargetDir"));
     } else {
         installer.setValue("AllUsers", "false");
-        installer.dropAdminRights();
+        installer.setValue("TargetDir", installer.value("UserTargetDir"));
     }
+
+    if (installer.value("os") === "win") {
+        var orgFolder = installer.value("TargetDir");
+        var programFiles = installer.environmentVariable("ProgramW6432");
+        var localProgFiles = installer.environmentVariable("ProgramFiles");
+        installer.setValue("TargetDir", orgFolder.replace(localProgFiles, programFiles));
+    }
+    var widget = gui.currentPageWidget();
+    if (widget !== null)
+        widget.TargetDirectoryLineEdit.text = installer.value("TargetDir").replace("\\", "/");
 }
 
 Controller.prototype.FinishedPageCallback = function()

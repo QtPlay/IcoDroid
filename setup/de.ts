@@ -46,7 +46,7 @@
 <context>
     <name>install</name>
     <message>
-        <location filename="install.js" line="+9"/>
+        <location filename="install.js" line="+8"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>

@@ -6,7 +6,8 @@
 	<Publisher>Skycoder42</Publisher>
 	<ProductUrl>https://github.com/Skycoder42/IcoDroid/releases</ProductUrl>
 	<StartMenuDir>IcoDroid</StartMenuDir>
-	<TargetDir>@ApplicationsDir@/IcoDroid</TargetDir>
+	<TargetDir>@HomeDir@/AppData/Local/IcoDroid</TargetDir>
+	<AdminTargetDir>@ApplicationsDir@/IcoDroid</AdminTargetDir>
 	<RunProgram>IcoDroid</RunProgram>
 	<AllowSpaceInPath>true</AllowSpaceInPath>
 	<AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
