@@ -1,10 +1,16 @@
 function Controller()
 {
+    // store the default target dir
     installer.setValue("UserTargetDir", installer.value("TargetDir"));
+
+    //add qery info
     var queryString = "os=";
     queryString = queryString + installer.value("os");
+    queryString = queryString + "&arch=";
+    queryString = queryString + systemInfo.currentCpuArchitecture;
     installer.setValue("UrlQueryString", queryString);
 
+    //determine if admin or not
     var isAdmin = false;
     if (installer.value("os") === "win") {
         var testAdmin = installer.execute("cmd", ["/c", "net", "session"]);
@@ -16,6 +22,7 @@ function Controller()
             isAdmin = true;
     }
 
+    //set admin and all users
     installer.setValue("isAdmin", isAdmin ? "true" : "false");
     installer.setValue("AllUsers", isAdmin ? "true" : "false");
 }
@@ -89,12 +96,14 @@ Controller.prototype.TargetDirectoryPageCallback = function()
         installer.setValue("TargetDir", installer.value("UserTargetDir"));
     }
 
-    if (installer.value("os") === "win") {
+    if (installer.value("os") === "win" &&
+        systemInfo.currentCpuArchitecture.search("64") > 0) {
         var orgFolder = installer.value("TargetDir");
         var programFiles = installer.environmentVariable("ProgramW6432");
         var localProgFiles = installer.environmentVariable("ProgramFiles");
         installer.setValue("TargetDir", orgFolder.replace(localProgFiles, programFiles));
     }
+
     var widget = gui.currentPageWidget();
     if (widget !== null)
         widget.TargetDirectoryLineEdit.text = installer.value("TargetDir").replace("\\", "/");

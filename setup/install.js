@@ -1,24 +1,25 @@
 function Component()
 {
+    //save the binary name
     installer.setValue("BinaryName", installer.value("RunProgram"));
 
-    if (installer.value("os") === "win") {
-        var programFiles = installer.environmentVariable("ProgramW6432");
-        if(programFiles.length === 0) {
-            QMessageBox.critical("os.not64", qsTr("Error"), qsTr("This Program is an 64bit Program. You can't install it on a 32bit machine"));
-            gui.rejectWithoutPrompt();
-        } else {
-            if(installer.isInstaller())
-                installer.addWizardPage(component, "ShortcutPage", QInstaller.ReadyForInstallation);
-        }
+    //check if architecture is supported
+    if(systemInfo.currentCpuArchitecture.search("64") < 0) {
+        QMessageBox.critical("os.not64", qsTr("Error"), qsTr("This Program is an 64bit Program. You can't install it on a 32bit machine"));
+        gui.rejectWithoutPrompt();
     }
 
-    if(installer.isInstaller())
+    //add custom pages
+    if(installer.isInstaller()) {
         installer.addWizardPage(component, "UserPage", QInstaller.TargetDirectory);
+        if (installer.value("os") === "win")
+            installer.addWizardPage(component, "ShortcutPage", QInstaller.ReadyForInstallation);
+    }
 }
 
 Component.prototype.createOperations = function()
 {
+    //update RunProgram, depending on the os
     if (installer.value("os") === "win") {
         installer.setValue("RunProgram", "@TargetDir@/@BinaryName@");
     } else if(installer.value("os") === "mac") {
@@ -31,9 +32,9 @@ Component.prototype.createOperations = function()
         component.createOperations();
 
         if (installer.value("os") === "win") {
-            component.addOperation("CreateShortcut", "@RunProgram@.exe", "@StartMenuDir@/@BinaryName@.lnk");
+            component.addOperation("CreateShortcut", "@RunProgram@.exe", "@StartMenuDir@/@Name@.lnk");
             if(installer.isOfflineOnly())
-                component.addOperation("CreateShortcut", "@TargetDir@/@MaintenanceToolName@.exe", "@StartMenuDir@/@MaintenanceToolName@.lnk");
+                component.addOperation("CreateShortcut", "@TargetDir@/@MaintenanceToolName@.exe", "@StartMenuDir@/Uninstall.lnk");
             else {
                 component.addOperation("CreateShortcut", "@TargetDir@/@MaintenanceToolName@.exe", "@StartMenuDir@/@MaintenanceToolName@.lnk");
                 component.addOperation("CreateShortcut", "@TargetDir@/@MaintenanceToolName@.exe", "@StartMenuDir@/ManagePackages.lnk", "--manage-packages");
@@ -44,7 +45,7 @@ Component.prototype.createOperations = function()
             if(installer.isInstaller()) {
                 var pageWidget = gui.pageWidgetByObjectName("DynamicShortcutPage");
                 if (pageWidget !== null && pageWidget.shortcutCheckBox.checked)
-                    component.addOperation("CreateShortcut", "@RunProgram@.exe", "@DesktopDir@/@BinaryName@.lnk");
+                    component.addOperation("CreateShortcut", "@RunProgram@.exe", "@DesktopDir@/@Name@.lnk");
             }
 
             component.addElevatedOperation("Execute", "@TargetDir@/vcredist_x64.exe", "/quiet", "/norestart");
@@ -52,7 +53,7 @@ Component.prototype.createOperations = function()
         } else if (installer.value("os") === "x11") {
             component.addOperation("CreateDesktopEntry",
                                    "@BinaryName@.desktop",
-                                   "Version=1.0\nType=Application\nTerminal=false\nExec=@RunProgram@\nName=@BinaryName@\nIcon=@TargetDir@/main.png");
+                                   "Version=1.0\nType=Application\nTerminal=false\nExec=@RunProgram@\nName=@Name@\nIcon=@TargetDir@/main.png");
         }
     } catch (e) {
         print(e);
