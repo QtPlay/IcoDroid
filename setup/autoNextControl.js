@@ -1,6 +1,9 @@
 function Controller()
 {
     installer.setValue("UserTargetDir", installer.value("TargetDir"));
+    var queryString = "os=";
+    queryString = queryString + installer.value("os");
+    installer.setValue("UrlQueryString", queryString);
 
     var isAdmin = false;
     if (installer.value("os") === "win") {
