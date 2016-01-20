@@ -17,8 +17,8 @@ function Controller()
         if(testAdmin.length > 1 && testAdmin[1] == 0)
             isAdmin = true;
     } else {
-        var testAdmin = installer.execute("id", ["-u"]);//TODO test
-        if(testAdmin.length > 1 && testAdmin[1] == 0)
+        var testAdmin = installer.execute("id", ["-u"]);
+        if(testAdmin.length > 1 && testAdmin[0] == 0)
             isAdmin = true;
     }
 

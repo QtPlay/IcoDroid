@@ -25,13 +25,18 @@ cp $2/setup/autoNextControl.js ./config/
 cp $2/setup/package.xml ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/setup/install.js ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/setup/shortcutPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
-cp $2/LICENSE ./packages/com.SkycoderSoft.IcoDroid/meta/
+cp $2/setup/userPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
+cp $2/setup/*.qm ./packages/com.SkycoderSoft.IcoDroid/meta/
+cp $2/setup/LICENSE*.txt ./packages/com.SkycoderSoft.IcoDroid/meta/
+cp $2/LICENSE.txt ./packages/com.SkycoderSoft.IcoDroid/meta/
 
-mkdir IcoDroid
-if [ "$3" -eq "0" ]; then
-	$1/bin/repogen -p ./packages ./IcoDroid/mac
-else
-	$1/bin/repogen --update-new-components -p ./packages ./IcoDroid/mac
-fi
-$1/bin/binarycreator -n -c ./config/config.xml -p ./packages IcoDroid_1.1.1_setup
-zip -r -9 IcoDroid_1.1.1_setup.app.zip IcoDroid_1.1.1_setup.app
+# DEBUG - CREATE OFFLINE INSTALLER
+#mkdir IcoDroid
+#if [ "$3" -eq "0" ]; then
+#	$1/bin/repogen -p ./packages ./IcoDroid/mac
+#else
+#	$1/bin/repogen --update-new-components -p ./packages ./IcoDroid/mac
+#fi
+#$1/bin/binarycreator -n -c ./config/config.xml -p ./packages IcoDroid_1.2.0_setup
+#zip -r -9 IcoDroid_1.2.0_setup.app.zip IcoDroid_1.2.0_setup.app
+$1/bin/binarycreator -f -c ./config/config.xml -p ./packages IcoDroid_1.2.0_setup
