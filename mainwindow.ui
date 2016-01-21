@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>486</width>
+    <width>500</width>
     <height>261</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="loadTab">
        <attribute name="title">
@@ -73,23 +73,10 @@
            </spacer>
           </item>
           <item>
-           <widget class="QToolButton" name="addIconButton">
-            <property name="iconSize">
-             <size>
-              <width>24</width>
-              <height>24</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QToolButton" name="addIconButton"/>
           </item>
           <item>
            <widget class="QToolButton" name="removeIconButton">
-            <property name="iconSize">
-             <size>
-              <width>24</width>
-              <height>24</height>
-             </size>
-            </property>
             <property name="popupMode">
              <enum>QToolButton::MenuButtonPopup</enum>
             </property>
@@ -551,6 +538,9 @@
    </property>
    <property name="toolTip">
     <string>Removes all items from the list</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Del</string>
    </property>
   </action>
  </widget>

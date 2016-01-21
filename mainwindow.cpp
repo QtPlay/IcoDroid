@@ -5,6 +5,11 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QApplication>
+#include <QImageReader>
+#include <QScreen>
+#include "dialogmaster.h"
+
+static QStringList byteToStringList(const QByteArrayList &byteArrayList);
 
 struct ScaleInfo {
 	bool isChecked;
@@ -47,6 +52,14 @@ MainWindow::MainWindow(QWidget *parent) :
 										   });
 	this->ui->removeIconButton->setDefaultAction(this->ui->actionRemove);
 
+	//setup icon sizes
+	connect(this, &MainWindow::iconSizeChanged,
+			this->ui->addIconButton, &QToolButton::setIconSize);
+	connect(this, &MainWindow::iconSizeChanged,
+			this->ui->removeIconButton, &QToolButton::setIconSize);
+	this->setIconSize(QSize(24, 24) * (QApplication::primaryScreen()->logicalDotsPerInch() / 96.));//TODO experimental high dpi support?
+	emit iconSizeChanged(this->iconSize());
+
 	//restore gui
 	this->settings->beginGroup(QStringLiteral("gui"));
 	this->restoreGeometry(this->settings->value(QStringLiteral("geom")).toByteArray());
@@ -83,7 +96,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	//init functions
 	this->on_iconTypeComboBox_activated(this->ui->iconTypeComboBox->currentText());
-	this->updateController->scheduleUpdate(QDateTime::currentDateTime().addSecs(10));
+	this->updateController->scheduleUpdate(QDateTime::currentDateTime().addSecs(5));
 }
 
 MainWindow::~MainWindow()
@@ -103,7 +116,8 @@ MainWindow::~MainWindow()
 	this->settings->setValue(QStringLiteral("xxhdpi"), this->ui->xxhdpiCheckBox->isChecked());
 	this->settings->setValue(QStringLiteral("xxxhdpi"), this->ui->xxxhdpiCheckBox->isChecked());
 	this->settings->endGroup();
-	this->settings->setValue(QStringLiteral("recentProfile"), this->ui->iconTypeComboBox->currentText());
+	if(this->ui->iconTypeComboBox->findText(this->ui->iconTypeComboBox->currentText()) >= 0)
+		this->settings->setValue(QStringLiteral("recentProfile"), this->ui->iconTypeComboBox->currentText());
 
 	delete this->ui;
 }
@@ -111,12 +125,12 @@ MainWindow::~MainWindow()
 void MainWindow::openFile(QString path)
 {
 	QIcon newIcon(path);
-	if(!newIcon.isNull()) {
-		this->settings->setValue(QStringLiteral("paths/openPath"), path);
+	if(!newIcon.isNull() && !newIcon.availableSizes().isEmpty()) {
+		this->settings->setValue(QStringLiteral("paths/openPath"), QFileInfo(path).dir().absolutePath());
 		this->mainModel->appendIcon(newIcon, path);
 		this->ui->realFileLineEdit->setText(QFileInfo(path).baseName());
 	} else {
-		QMessageBox::critical(this, tr("Error"), tr("Unable to open icon \"%1\"").arg(path));
+		DialogMaster::critical(this, tr("Error"), tr("Unable to open icon \"%1\"").arg(path));
 	}
 }
 
@@ -132,12 +146,26 @@ void MainWindow::selectionChanged(const QModelIndex &current)
 
 void MainWindow::on_actionAdd_File_triggered()
 {
-	QString path = QFileDialog::getOpenFileName(this,
-												tr("Open Icon Archive"),
-												this->settings->value(QStringLiteral("paths/openPath")).toString(),
-												tr("Icon files (*.ico *.icns);;Image Files (*.png *.jpg *.bmp);;All Files (*)"));
-	if(!path.isEmpty())
-		openFile(path);
+	this->settings->beginGroup(QStringLiteral("paths"));
+
+	QFileDialog dialog(this);
+	DialogMaster::masterDialog(&dialog);
+	dialog.setWindowTitle(tr("Open Icon Archive"));
+	dialog.setAcceptMode(QFileDialog::AcceptOpen);
+	dialog.setFileMode(QFileDialog::ExistingFiles);
+	dialog.setDirectory(this->settings->value(QStringLiteral("openPath")).toString());
+	QStringList mTypes = byteToStringList(QImageReader::supportedMimeTypes());
+	mTypes.append(QStringLiteral("application/octet-stream"));
+	dialog.setMimeTypeFilters(mTypes);
+	dialog.selectNameFilter(this->settings->value(QStringLiteral("openFilter")).toString());
+	if(dialog.exec() == QDialog::Accepted) {
+		this->settings->setValue(QStringLiteral("openFilter"), dialog.selectedNameFilter());
+
+		for(QString file : dialog.selectedFiles())
+			this->openFile(file);
+	}
+
+	this->settings->endGroup();
 }
 
 void MainWindow::on_actionRemove_triggered()
@@ -165,7 +193,7 @@ void MainWindow::on_createButton_clicked()
 	QString subFolder = this->ui->contentFolderComboBox->currentText();
 	QString realName = this->ui->realFileLineEdit->text();
 	if(pathBase.isEmpty() || subFolder.isEmpty() || realName.isEmpty()) {
-		QMessageBox::warning(this, tr("Warning"), tr("Please enter a valid base path, folder base and file name"));
+		DialogMaster::warning(this, tr("Warning"), tr("Please enter a valid base path, folder base and file name"));
 		return;
 	}
 
@@ -193,7 +221,7 @@ void MainWindow::on_createButton_clicked()
 			QDir targetDir(pathBase);
 			QString fullSubFolder = subFolder + checkMap[i].subFolderSuffix;
 			if(!targetDir.mkpath(fullSubFolder)) {
-				QMessageBox::critical(this, tr("Error"), tr("Failed to create subfolder \"%1\"").arg(fullSubFolder));
+				DialogMaster::critical(this, tr("Error"), tr("Failed to create subfolder \"%1\"").arg(fullSubFolder));
 				return;
 			}
 			targetDir.cd(fullSubFolder);
@@ -205,13 +233,13 @@ void MainWindow::on_createButton_clicked()
 
 			QString finalPath = targetDir.absoluteFilePath(realName + QStringLiteral(".png"));
 			if(!targetPix.save(finalPath, "png")) {
-				QMessageBox::critical(this, tr("Error"), tr("Failed to create file \"%1\"").arg(finalPath));
+				DialogMaster::critical(this, tr("Error"), tr("Failed to create file \"%1\"").arg(finalPath));
 				return;
 			}
 		}
 	}
 
-	QMessageBox::information(this, tr("Success"), tr("Icons successfully exported!"));
+	DialogMaster::information(this, tr("Success"), tr("Icons successfully exported!"));
 }
 
 void MainWindow::initSettings()
@@ -232,7 +260,7 @@ void MainWindow::initSettings()
 		this->settings->setValue(QStringLiteral("baseSize"), 48);
 		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
 		this->settings->endGroup();
-		//Create "Action Bar / Dialog / Tab"
+		//Create "Action Bar, Dialog, Tab"
 		this->settings->beginGroup(tr("Action Bar, Dialog, Tab"));
 		this->settings->setValue(QStringLiteral("baseSize"), 24);
 		this->settings->setValue(QStringLiteral("folderBaseName"), QStringLiteral("drawable"));
@@ -249,4 +277,12 @@ void MainWindow::initSettings()
 		this->settings->endGroup();
 		this->settings->endGroup();
 	}
+}
+
+static QStringList byteToStringList(const QByteArrayList &byteArrayList)
+{
+	QStringList rList;
+	for(QByteArray aValue : byteArrayList)
+		rList += aValue;
+	return rList;
 }

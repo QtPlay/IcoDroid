@@ -53,7 +53,8 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     iconviewdockwidget.h \
-    pixmapmodel.h
+    pixmapmodel.h \
+    dialogmaster.h
 
 FORMS    += mainwindow.ui \
 	iconviewdockwidget.ui
