@@ -144,41 +144,49 @@ void MainWindow::selectionChanged(const QModelIndex &current)
 	this->previewDock->setPreviewIcon(this->mainModel->pixmap(current));
 }
 
+void MainWindow::fileSelected(const QStringList &selected)
+{
+	QFileDialog *dialog = qobject_cast<QFileDialog*>(QObject::sender());
+	Q_ASSERT(dialog);
+
+	this->settings->setValue(QStringLiteral("paths/openFilter"), dialog->selectedNameFilter());
+	dialog->close();
+	dialog->deleteLater();
+
+	for(QString file : selected)
+		this->openFile(file);
+}
+
 void MainWindow::on_actionAdd_File_triggered()
 {
 	this->settings->beginGroup(QStringLiteral("paths"));
 
-	QFileDialog dialog(this);
-	DialogMaster::masterDialog(&dialog);
-	dialog.setWindowTitle(tr("Open Icon Archive"));
-	dialog.setAcceptMode(QFileDialog::AcceptOpen);
-	dialog.setFileMode(QFileDialog::ExistingFiles);
-	dialog.setDirectory(this->settings->value(QStringLiteral("openPath")).toString());
+	QFileDialog *dialog = new QFileDialog(this);
+	DialogMaster::masterDialog(dialog);
+	dialog->setWindowTitle(tr("Open Icon Archive"));
+	dialog->setAcceptMode(QFileDialog::AcceptOpen);
+	dialog->setFileMode(QFileDialog::ExistingFiles);
+	dialog->setDirectory(this->settings->value(QStringLiteral("openPath")).toString());
 
 	QStringList mTypes = byteToStringList(QImageReader::supportedMimeTypes());
 	mTypes.append(QStringLiteral("application/octet-stream"));
-	dialog.setMimeTypeFilters(mTypes);
+	dialog->setMimeTypeFilters(mTypes);
 
 	QString selFilter = this->settings->value(QStringLiteral("openFilter")).toString();
+	qDebug() << selFilter;
 	if(selFilter.isEmpty()) {
 #if defined(Q_OS_WIN)
-	dialog.selectMimeTypeFilter(QStringLiteral("image/vnd.microsoft.icon"));
-#elif define(Q_OS_OSX)
-	dialog.selectMimeTypeFilter(QStringLiteral("image/x-icns"));
+	dialog->selectMimeTypeFilter(QStringLiteral("image/vnd.microsoft.icon"));
+#elif defined(Q_OS_OSX)
+	dialog->selectMimeTypeFilter(QStringLiteral("image/x-icns"));
 #else
-	dialog.selectMimeTypeFilter(QStringLiteral("image/png"));
+	dialog->selectMimeTypeFilter(QStringLiteral("image/png"));
 #endif
 	} else
-		dialog.selectNameFilter(selFilter);
+		dialog->selectNameFilter(selFilter);
 
-	if(dialog.exec() == QDialog::Accepted) {
-		this->settings->setValue(QStringLiteral("openFilter"), dialog.selectedNameFilter());
-		this->settings->endGroup();
-
-		for(QString file : dialog.selectedFiles())
-			this->openFile(file);
-	} else
-		this->settings->endGroup();
+	this->settings->endGroup();
+	dialog->open(this, SLOT(fileSelected(QStringList)));
 }
 
 void MainWindow::on_actionRemove_triggered()

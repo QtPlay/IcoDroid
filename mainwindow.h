@@ -26,6 +26,7 @@ public slots:
 private slots:
 	void rowsChanged(int count);
 	void selectionChanged(const QModelIndex &current);
+	void fileSelected(const QStringList & selected);
 
 	void on_actionAdd_File_triggered();
 	void on_actionRemove_triggered();
