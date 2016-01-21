@@ -154,18 +154,31 @@ void MainWindow::on_actionAdd_File_triggered()
 	dialog.setAcceptMode(QFileDialog::AcceptOpen);
 	dialog.setFileMode(QFileDialog::ExistingFiles);
 	dialog.setDirectory(this->settings->value(QStringLiteral("openPath")).toString());
+
 	QStringList mTypes = byteToStringList(QImageReader::supportedMimeTypes());
 	mTypes.append(QStringLiteral("application/octet-stream"));
 	dialog.setMimeTypeFilters(mTypes);
-	dialog.selectNameFilter(this->settings->value(QStringLiteral("openFilter")).toString());
+
+	QString selFilter = this->settings->value(QStringLiteral("openFilter")).toString();
+	if(selFilter.isEmpty()) {
+#if defined(Q_OS_WIN)
+	dialog.selectMimeTypeFilter(QStringLiteral("image/vnd.microsoft.icon"));
+#elif define(Q_OS_OSX)
+	dialog.selectMimeTypeFilter(QStringLiteral("image/x-icns"));
+#else
+	dialog.selectMimeTypeFilter(QStringLiteral("image/png"));
+#endif
+	} else
+		dialog.selectNameFilter(selFilter);
+
 	if(dialog.exec() == QDialog::Accepted) {
 		this->settings->setValue(QStringLiteral("openFilter"), dialog.selectedNameFilter());
+		this->settings->endGroup();
 
 		for(QString file : dialog.selectedFiles())
 			this->openFile(file);
-	}
-
-	this->settings->endGroup();
+	} else
+		this->settings->endGroup();
 }
 
 void MainWindow::on_actionRemove_triggered()
