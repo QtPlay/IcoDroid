@@ -50,7 +50,7 @@
         <translation>&amp;Vorschau Anzeigen</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+36"/>
         <source>Configure and create the Android icons from the loaded ones</source>
         <translation>Konfigurieren und erstellen Sie die Android-Icons aus den Geladenen</translation>
     </message>
@@ -105,7 +105,7 @@
         <translation>Android Konfiguration</translation>
     </message>
     <message>
-        <location line="-76"/>
+        <location line="-63"/>
         <source>Load the icon files that will be used as a base</source>
         <translation>Lädt die Icon-Dateien, welche als Basis dienen</translation>
     </message>
@@ -120,7 +120,7 @@
         <translation>Zeigt eine Vorschau des aktuell ausgewählten Icons in Vollgröße</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+53"/>
         <source>Icon Sizes</source>
         <translation>Icons Größen</translation>
     </message>
@@ -135,8 +135,8 @@
         <translation>&amp;Profil:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="+72"/>
-        <location line="+159"/>
+        <location filename="../mainwindow.cpp" line="+85"/>
+        <location line="+195"/>
         <source>Launcher Icon</source>
         <translation></translation>
     </message>
@@ -296,11 +296,16 @@
         <translation>Icon Entfernen</translation>
     </message>
     <message>
+        <location line="+21"/>
+        <source>Ctrl+Del</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Remove</source>
         <translation type="vanished">Entfernen</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-18"/>
         <source>Removes the currently selected icon from the list</source>
         <translation>Entfernt das aktuell ausgewählte Icon aus der Liste</translation>
     </message>
@@ -320,29 +325,28 @@
         <translation>Entfernt alle Icons aus der Liste</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="-110"/>
+        <location filename="../mainwindow.cpp" line="-129"/>
         <source>Open Icon Archive</source>
         <translation>Icon-Archiv öffnen</translation>
     </message>
     <message>
-        <location line="+2"/>
         <source>Icon files (*.ico *.icns);;Image Files (*.png *.jpg *.bmp);;All Files (*)</source>
-        <translation>Icon-Dateien (*.ico *.icns);;Bild-Dateien (*.png *.jpg *.bmp);;Alle Dateien (*)</translation>
+        <translation type="vanished">Icon-Dateien (*.ico *.icns);;Bild-Dateien (*.png *.jpg *.bmp);;Alle Dateien (*)</translation>
     </message>
     <message>
-        <location line="-19"/>
-        <location line="+77"/>
+        <location line="-33"/>
+        <location line="+112"/>
         <location line="+12"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-89"/>
+        <location line="-124"/>
         <source>Unable to open icon &quot;%1&quot;</source>
         <translation>Das Icon &quot;%1&quot; konnte nicht geöffnet werden</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+84"/>
         <source>Warning</source>
         <translation>Warnung</translation>
     </message>

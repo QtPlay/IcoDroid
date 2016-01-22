@@ -7,6 +7,9 @@
 #include <QApplication>
 #include <QImageReader>
 #include <QScreen>
+#ifdef Q_OS_OSX
+#include <QMenuBar>
+#endif
 #include "dialogmaster.h"
 
 static QStringList byteToStringList(const QByteArrayList &byteArrayList);
@@ -38,6 +41,16 @@ MainWindow::MainWindow(QWidget *parent) :
 	this->ui->updatesLayout->replaceWidget(this->ui->checkUpdatesPlaceholder,
 										   this->updateController->createUpdatePanel(this));
 	this->ui->checkUpdatesPlaceholder->deleteLater();
+
+#ifdef Q_OS_OSX
+	//Mac actions...
+	QMenu *menu = this->menuBar()->addMenu(tr("Help"));
+	menu->addAction(this->updateController->getUpdateAction());
+	QAction *aboutAction = new QAction(this->ui->aboutButton->text(), this);
+	aboutAction->setMenuRole(QAction::AboutQtRole);
+	connect(aboutAction, &QAction::triggered, qApp, &QApplication::aboutQt);
+	menu->addAction(aboutAction);
+#endif
 
 	//setup actions
 	this->ui->loadViewListView->addActions({
