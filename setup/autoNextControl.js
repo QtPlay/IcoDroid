@@ -1,12 +1,14 @@
 function Controller()
 {
-    var targetBase = installer.value("TargetDir");
-
     //add qery info
-    var queryString = "os=";
+    var queryString = "osGroup=";
     queryString = queryString + installer.value("os");
     queryString = queryString + "&arch=";
     queryString = queryString + systemInfo.currentCpuArchitecture;
+    queryString = queryString + "&os=";
+    queryString = queryString + systemInfo.productType;
+    queryString = queryString + "&kernel=";
+    queryString = queryString + systemInfo.kernelType;
     installer.setValue("UrlQueryString", queryString);
 
     //determine if admin or not
@@ -20,28 +22,39 @@ function Controller()
         if(testAdmin.length > 1 && testAdmin[0] == 0)
             isAdmin = true;
     }
-
-    //find the default location, for admin and user for each os
-    if (installer.value("os") === "win") {
-        installer.setValue("UserTargetDir", "@HomeDir@/AppData/Local/" + targetBase);
-    } else if(installer.value("os") === "mac") {
-        installer.setValue("UserTargetDir", "@HomeDir@/Applications/" + targetBase);
-    } else if(installer.value("os") === "x11") {
-        installer.setValue("UserTargetDir", "@HomeDir@/" + targetBase);
-    }
-    installer.setValue("AdminTargetDir", "@ApplicationsDir@/" + targetBase);
-
-    //set admin and all users
     installer.setValue("isAdmin", isAdmin ? "true" : "false");
-    installer.setValue("AllUsers", isAdmin ? "true" : "false");
+
+    //only for installation
+    if(installer.isInstaller()) {
+        //find the default location, for admin and user for each os
+        var targetBase = installer.value("TargetDir");
+        if (installer.value("os") === "win") {
+            installer.setValue("UserTargetDir", "@HomeDir@/AppData/Local/" + targetBase);
+        } else if(installer.value("os") === "mac") {
+            installer.setValue("UserTargetDir", "@HomeDir@/Applications/" + targetBase);
+        } else if(installer.value("os") === "x11") {
+            installer.setValue("UserTargetDir", "@HomeDir@/" + targetBase);
+        }
+        installer.setValue("AdminTargetDir", "@ApplicationsDir@/" + targetBase);
+
+        //get default all users from admin
+        installer.setValue("AllUsers", isAdmin ? "true" : "false");
+    }
 }
 
 Controller.prototype.IntroductionPageCallback = function()
 {
     if(!installer.isInstaller()) {
+        //check if admin neccessarity is given
+        if(installer.value("AllUsers") === "true" && installer.value("isAdmin") === "false") {
+            QMessageBox.critical("run.notAdmin", qsTr("Error"), qsTr("The installation was done by an admin/root. Please restart the maintenancetool with elevated rights."));
+            installer.autoAcceptMessageBoxes();
+            gui.clickButton(buttons.CancelButton);
+            return;
+        }
+
         var widget = gui.currentPageWidget();
         if (widget !== null) {
-
             var comps = installer.components();
             var isOnline = false;
             for (i = 0; i < comps.length; ++i) {
