@@ -30,12 +30,14 @@ function Controller()
         var targetBase = installer.value("TargetDir");
         if (installer.value("os") === "win") {
             installer.setValue("UserTargetDir", "@HomeDir@/AppData/Local/" + targetBase);
+            installer.setValue("AdminTargetDir", "@ApplicationsDir@/" + targetBase);
         } else if(installer.value("os") === "mac") {
-            installer.setValue("UserTargetDir", "@HomeDir@/Applications/" + targetBase);
+            installer.setValue("UserTargetDir", "@HomeDir@/Applications/" + targetBase + ".app");
+            installer.setValue("AdminTargetDir", "@ApplicationsDir@/" + targetBase + ".app");
         } else if(installer.value("os") === "x11") {
             installer.setValue("UserTargetDir", "@HomeDir@/" + targetBase);
+            installer.setValue("AdminTargetDir", "@ApplicationsDir@/" + targetBase);
         }
-        installer.setValue("AdminTargetDir", "@ApplicationsDir@/" + targetBase);
 
         //get default all users from admin
         installer.setValue("AllUsers", isAdmin ? "true" : "false");

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>261</height>
+    <width>573</width>
+    <height>315</height>
    </rect>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="loadTab">
        <attribute name="title">
@@ -249,6 +249,9 @@
               <widget class="QPathEdit" name="basePathEdit">
                <property name="toolTip">
                 <string>Choose a folder to create the icons folders into</string>
+               </property>
+               <property name="style">
+                <enum>QPathEdit::JoinedButton</enum>
                </property>
                <property name="pathMode">
                 <enum>QPathEdit::ExistingFolder</enum>

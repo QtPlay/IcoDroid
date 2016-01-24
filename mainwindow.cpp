@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	settings(new QSettings(this)),
 	mainModel(new PixmapModel(this)),
 	previewDock(new IconViewDockWidget(this)),
-	updateController(new QtAutoUpdater::UpdateController(this))
+	updateController(new QtAutoUpdater::UpdateController(this))//TODO "this" not ok because of conflict with sheets on mac ?!?
 {
 	this->initSettings();
 

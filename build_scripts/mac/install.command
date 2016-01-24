@@ -18,7 +18,7 @@ mv -f ./deploy/IcoDroid.app install/packages/com.SkycoderSoft.IcoDroid/data
 cd ./install
 
 #config
-cp $2/build_scripts/mac/config.xml ./config/
+cp $2/setup/config.xml ./config/
 cp $2/setup/autoNextControl.js ./config/
 
 #package

@@ -70,7 +70,7 @@
         <translation>Wählen Sie einen Ordner, in dem die Icon-Ordner erstellt werden sollen</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the prefix of the folders.&lt;/p&gt;&lt;p&gt;For example, &lt;span style=&quot; font-style:italic;&quot;&gt;drawable&lt;/span&gt; will result in folder names like &lt;span style=&quot; font-style:italic;&quot;&gt;drawable-xhdpi&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wählen sie das Präfix der Ordner.&lt;/p&gt;&lt;p&gt;Zum Beispiel wird &lt;span style=&quot; font-style:italic;&quot;&gt;drawable&lt;/span&gt; als Präfix u.A. in einem Ordner namens &lt;span style=&quot; font-style:italic;&quot;&gt;drawable-xhdpi&lt;/span&gt; resultieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -100,7 +100,7 @@
         <translation></translation>
     </message>
     <message>
-        <location line="-422"/>
+        <location line="-425"/>
         <source>Android Configuration</source>
         <translation>Android Konfiguration</translation>
     </message>
@@ -206,7 +206,7 @@
         <translation>Basis-&amp;Ordner:</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>Con&amp;tent Folder Prefix:</source>
         <translation>&amp;Inhaltsordner-Präfix:</translation>
     </message>
