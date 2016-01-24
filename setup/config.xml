@@ -6,16 +6,15 @@
 	<Publisher>Skycoder42</Publisher>
 	<ProductUrl>https://github.com/Skycoder42/IcoDroid/releases</ProductUrl>
 	<StartMenuDir>IcoDroid</StartMenuDir>
-	<TargetDir>@HomeDir@/IcoDroid</TargetDir>
-	<AdminTargetDir>@ApplicationsDir@/IcoDroid</AdminTargetDir>
+	<TargetDir>IcoDroid</TargetDir>
 	<RunProgram>IcoDroid</RunProgram>
 	<AllowSpaceInPath>true</AllowSpaceInPath>
 	<AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
 	<RemoteRepositories>
 		<Repository>
-			<Url>http://skynet.is-an-engineer.com/repositories/IcoDroid/linux_x64</Url>
+			<Url>http://skynet.is-an-engineer.com/repositories/IcoDroid</Url>
 			<Enabled>1</Enabled>
-			<DisplayName>IcoDroid Linux x64 Repository</DisplayName>
+			<DisplayName>IcoDroid Online Repository</DisplayName>
 		</Repository>
 	</RemoteRepositories>
 	<ControlScript>autoNextControl.js</ControlScript>

@@ -24,8 +24,8 @@ cp $2/setup/autoNextControl.js ./config/
 #package
 cp $2/setup/package.xml ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/setup/install.js ./packages/com.SkycoderSoft.IcoDroid/meta/
-cp $2/setup/shortcutPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
-cp $2/setup/userPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
+cp $2/setup/ShortcutPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
+cp $2/setup/UserPage.ui ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/setup/*.qm ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/setup/LICENSE*.txt ./packages/com.SkycoderSoft.IcoDroid/meta/
 cp $2/LICENSE.txt ./packages/com.SkycoderSoft.IcoDroid/meta/

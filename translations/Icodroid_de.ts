@@ -135,7 +135,7 @@
         <translation>&amp;Profil:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="+85"/>
+        <location filename="../mainwindow.cpp" line="+98"/>
         <location line="+195"/>
         <source>Launcher Icon</source>
         <translation></translation>
@@ -334,7 +334,12 @@
         <translation type="vanished">Icon-Dateien (*.ico *.icns);;Bild-Dateien (*.png *.jpg *.bmp);;Alle Dateien (*)</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-132"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+99"/>
         <location line="+112"/>
         <location line="+12"/>
         <source>Error</source>

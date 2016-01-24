@@ -61,36 +61,34 @@ FORMS    += mainwindow.ui \
 
 DISTFILES += \
     .gitignore \
-    README.md \
+	README.md \
+	LICENSE.txt \
 	icons/Fatcow-Farm-Fresh-Android.ico \
 	icons/Visualpharm-Must-Have-Picture.ico \
-    build_scripts/win/deploy.bat \
-	build_scripts/win/translate.bat \
-    icons/main.icns \
-    build_scripts/mac/deploy.command \
-    build_scripts/mac/translate.command \
-    build_scripts/linux/translate.sh \
-    build_scripts/linux/deploy.sh \
-    build_scripts/mac/qt.conf \
-    build_scripts/win/qt.conf \
-    build_scripts/linux/qt.conf \
-    build_scripts/win/install.bat \
-	setup/package.xml \
-	setup/ShortcutPage.ui \
-	build_scripts/mac/install.command \
 	icons/main.ico \
-    setup/install.js \
-    build_scripts/linux/install.sh \
-    icons/main.png \
-    build_scripts/linux/config.xml \
-    build_scripts/win/config.xml \
-    build_scripts/mac/config.xml \
-    setup/autoNextControl.js \
+	icons/main.icns \
+	icons/main.png \
+	build_scripts/win/qt.conf \
 	build_scripts/win/regSetUninst.bat \
+	build_scripts/win/translate.bat \
+	build_scripts/win/deploy.bat \
+	build_scripts/win/install.bat \
+	build_scripts/mac/qt.conf \
+	build_scripts/mac/translate.command \
+	build_scripts/mac/deploy.command \
+	build_scripts/mac/install.command \
+	build_scripts/linux/qt.conf \
+    build_scripts/linux/translate.sh \
+	build_scripts/linux/deploy.sh \
+	build_scripts/linux/install.sh \
+	setup/config.xml \
+	setup/autoNextControl.js \
+	setup/package.xml \
+	setup/install.js \
+	setup/ShortcutPage.ui \
 	setup/UserPage.ui \
     setup/de.ts \
-    setup/LICENSE_de.txt \
-    LICENSE.txt
+	setup/LICENSE_de.txt
 
 RESOURCES += \
 	icodroid_res.qrc

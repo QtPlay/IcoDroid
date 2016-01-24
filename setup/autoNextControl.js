@@ -1,7 +1,6 @@
 function Controller()
 {
-    // store the default target dir
-    installer.setValue("UserTargetDir", installer.value("TargetDir"));
+    var targetBase = installer.value("TargetDir");
 
     //add qery info
     var queryString = "os=";
@@ -21,6 +20,16 @@ function Controller()
         if(testAdmin.length > 1 && testAdmin[0] == 0)
             isAdmin = true;
     }
+
+    //find the default location, for admin and user for each os
+    if (installer.value("os") === "win") {
+        installer.setValue("UserTargetDir", "@HomeDir@/AppData/Local/" + targetBase);
+    } else if(installer.value("os") === "mac") {
+        installer.setValue("UserTargetDir", "@HomeDir@/Applications/" + targetBase);
+    } else if(installer.value("os") === "x11") {
+        installer.setValue("UserTargetDir", "@HomeDir@/" + targetBase);
+    }
+    installer.setValue("AdminTargetDir", "@ApplicationsDir@/" + targetBase);
 
     //set admin and all users
     installer.setValue("isAdmin", isAdmin ? "true" : "false");
