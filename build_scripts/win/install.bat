@@ -18,7 +18,7 @@ move /y .\deploy .\install\packages\com.SkycoderSoft.IcoDroid\data
 cd .\install
 
 :config
-xcopy %2\build_scripts\win\config.xml .\config\* /y
+xcopy %2\setup\config.xml .\config\* /y
 xcopy %2\setup\autoNextControl.js .\config\* /y
 
 :package

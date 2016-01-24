@@ -298,7 +298,7 @@
     <message>
         <location line="+21"/>
         <source>Ctrl+Del</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Remove</source>
@@ -336,7 +336,7 @@
     <message>
         <location line="-132"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <location line="+99"/>

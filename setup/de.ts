@@ -46,14 +46,18 @@
 <context>
     <name>autoNextControl</name>
     <message>
-        <location filename="autoNextControl.js" line="+50"/>
+        <location filename="autoNextControl.js" line="+53"/>
         <source>Error</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
+        <source>The installation was done by an admin/root. Please restart %1 with elevated rights.</source>
+        <translation>Die Installation wurde von einem Admin/Root ausgeführt. Bitte starten Sie %1 erneut mit erhöhten Rechten.</translation>
+    </message>
+    <message>
         <source>The installation was done by an admin/root. Please restart the maintenancetool with elevated rights.</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Die Installation wurde von einem Admin/Root ausgeführt. Bitte starten Sie %1 erneut mit erhöhten Rechten</translation>
     </message>
 </context>
 <context>
